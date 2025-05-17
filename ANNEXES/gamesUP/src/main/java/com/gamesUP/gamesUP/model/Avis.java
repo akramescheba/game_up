@@ -8,31 +8,32 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="avis")
-
 public class Avis {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-int note;
-String commentaire;
+private int id;
+private int note;
+private String commentaire;
 	
-	
-	  //Ajout des getters et setters
-	public String getCommentaire() {
-		return commentaire;
-	}
+//Ajout des getters et setters
 
-	public void setCommentaire(String commentaire) {
-		this.commentaire = commentaire;
-	}
-
-	public int getNote() {
-		return note;
-	}
-
-	public void setNote(int note) {
-		this.note = note;
-	}
-
-	
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public int getNote() {
+	return note;
+}
+public void setNote(int note) {
+	this.note = note;
+}
+public String getCommentaire() {
+	return commentaire;
+}
+public void setCommentaire(String commentaire) {
+	this.commentaire = commentaire;
+}
 
 }

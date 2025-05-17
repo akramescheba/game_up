@@ -8,7 +8,6 @@ import jakarta.persistence.Table;
 
 
 @Entity
-@Table(name="wishliste")
 public class Wishlist {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -22,7 +21,6 @@ public class Wishlist {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getName() {
 		return name;
 	}

@@ -5,10 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
 
 @Entity
-@Table(name="purchaseline")
 public class PurchaseLine {
 	
 	@Id
@@ -25,8 +24,6 @@ public class PurchaseLine {
     private Purchase purchase;
     
 	 //Ajout des getters et setters
-    
-    
     public int getId() {
 		return id;
 	}

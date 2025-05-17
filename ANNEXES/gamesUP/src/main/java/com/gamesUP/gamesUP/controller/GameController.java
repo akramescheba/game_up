@@ -30,6 +30,7 @@ public class GameController {
     return game;
   }
 
+  //AJOUT DU VERBE POST  - AJOUTER UN JEU
   @PostMapping("/jeu")
   @ResponseStatus(code = HttpStatus.CREATED)
   public Long createGame(@RequestBody Game game) {
