@@ -53,6 +53,12 @@ public class GameServiceImpl implements GameService {
     if (newGame.getNumEdition() != null) {
       gameExistant.setNumEdition(newGame.getNumEdition());
     }
+    if (newGame.getCategory() != null) {
+        gameExistant.setCategory(newGame.getCategory());
+      }
+    if (newGame.getPublisher() != null) {
+        gameExistant.setPublisher(newGame.getPublisher());
+      }
     gameRepository.save(gameExistant);
   }
 
