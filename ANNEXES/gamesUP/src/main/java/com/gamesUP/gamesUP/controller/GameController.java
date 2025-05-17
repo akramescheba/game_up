@@ -22,7 +22,7 @@ public class GameController {
 
   @GetMapping("/jeu/{id}")
   @ResponseStatus(code = HttpStatus.OK)
-  public Game findGameById(@PathVariable("id") Long id) {
+  public Game getGameById(@PathVariable("id") Long id) {
     Game game = gameService.findById(id);
 
     if (game == null) {}

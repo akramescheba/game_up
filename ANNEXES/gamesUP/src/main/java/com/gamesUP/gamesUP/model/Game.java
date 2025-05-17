@@ -26,11 +26,13 @@ private Long numEdition;
 @ManyToOne
 
 @JoinColumn(name = "category_id")
-@JsonBackReference
+@JsonBackReference("game-category")
 private Category category;
 
 
 @ManyToOne
+@JoinColumn(name = "publisher_id")
+@JsonBackReference("game-publisher")
 private Publisher publisher;
 
 
