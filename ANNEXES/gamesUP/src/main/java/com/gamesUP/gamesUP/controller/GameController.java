@@ -13,13 +13,14 @@ public class GameController {
 
   @Autowired
   private GameService gameService;
-
+  
+  //AJOUT DU VERBE GET - POUR AFFICHER LES TOUS JEUX
   @GetMapping("/jeux")
   @ResponseStatus(code = HttpStatus.OK)
   public List<Game> getAllGame() {
     return gameService.findALL();
   }
-
+  //AJOUT DU VERBE GET  - POUR AFFICHER UN JEU PAR ID
   @GetMapping("/jeu/{id}")
   @ResponseStatus(code = HttpStatus.OK)
   public Game getGameById(@PathVariable("id") Long id) {
@@ -35,6 +36,7 @@ public class GameController {
     return gameService.ajouterJeu(game);
   }
 
+  //AJOUT DU VERBE PUT  - MODIFIER UN JEU PAR ID
   @PutMapping("/jeu/{id}")
   @ResponseStatus(code = HttpStatus.OK)
   public void updateGame(@PathVariable Long id, @RequestBody Game games) {
@@ -44,6 +46,7 @@ public class GameController {
     gameService.update(id, games);
   }
 
+  //AJOUT DU VERBE PUT  - MODIFIER UN CHAMP PRECIS DU JEU PAR ID
   @PatchMapping("/jeu/{id}")
   @ResponseStatus(code = HttpStatus.OK)
   public void updatePartialGame(@PathVariable Long id, @RequestBody Game newGame) {
@@ -54,6 +57,8 @@ public class GameController {
     }
     gameService.updatePartial(gameExistant, newGame);
   }
+  
+  //AJOUT DU VERBE DELETE  - SUPPRIMER UN JEU
   @DeleteMapping("/jeu/{id}")
   @ResponseStatus(code=HttpStatus.OK)
   public void deleteGame(@PathVariable Long id) {
