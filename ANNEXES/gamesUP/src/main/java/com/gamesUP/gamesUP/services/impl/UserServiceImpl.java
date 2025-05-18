@@ -46,6 +46,10 @@ public class UserServiceImpl implements UserService {
 		    User userExistant = userRepository.findById(id)
 		        .orElseThrow(() -> new ExceptionEntityDontExist());
 		    userExistant.setNom(users.getNom());
+		    userExistant.setEmail(users.getEmail());
+		    userExistant.setRole(users.getRole());
+		    userExistant.setPassword(users.getPassword());
+		    userExistant.setRepassword(users.getRepassword());
 		    userRepository.save(userExistant); 
 		}
 
@@ -53,6 +57,10 @@ public class UserServiceImpl implements UserService {
 	public void updatePartialUser(User userExistant, User newUser) {
 	    if (userExistant.getNom() != null) {
 	    	userExistant.setNom(newUser.getNom());
+	    	   userExistant.setEmail(newUser.getEmail());
+			    userExistant.setRole(newUser.getRole());
+			    userExistant.setPassword(newUser.getPassword());
+			    userExistant.setRepassword(newUser.getRepassword());
 	      }
 	  userRepository.save(userExistant);
 		

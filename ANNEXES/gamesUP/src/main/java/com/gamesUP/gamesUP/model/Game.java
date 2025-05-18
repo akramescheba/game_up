@@ -19,6 +19,7 @@ public class Game {
 
 private Long id;
 private String nom;
+private String image;
 private String auteur;
 private String genre;
 private Long numEdition;
@@ -52,6 +53,13 @@ public String getNom() {
 
 public void setNom(String nom) {
 	this.nom = nom;
+}
+public String getImage() {
+	return image;
+}
+
+public void setImage(String image) {
+	this.image = image;
 }
 
 public String getAuteur() {
