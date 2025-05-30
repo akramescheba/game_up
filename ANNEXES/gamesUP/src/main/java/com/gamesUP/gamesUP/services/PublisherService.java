@@ -6,7 +6,7 @@ import com.gamesUP.gamesUP.model.Publisher;
 
 public interface PublisherService {
 
-	List<Publisher> findALL();
+	public List<Publisher> findALL();
 
 	public Publisher findById(Long id);
 

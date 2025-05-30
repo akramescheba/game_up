@@ -47,9 +47,6 @@ public class GameServiceImpl implements GameService {
     if (newGame.getImage() != null) {
         gameExistant.setImage(newGame.getImage());
       }
-    if (newGame.getAuteur() != null) {
-      gameExistant.setAuteur(newGame.getAuteur());
-    }
     if (newGame.getGenre() != null) {
       gameExistant.setGenre(newGame.getGenre());
     }
@@ -71,7 +68,6 @@ public void update(Long id, Game games) {
         .orElseThrow(() -> new ExceptionEntityDontExist());
     gameExistant.setNom(games.getNom());
     gameExistant.setImage(games.getImage());
-    gameExistant.setAuteur(games.getAuteur());
     gameExistant.setGenre(games.getGenre());
     gameExistant.setNumEdition(games.getNumEdition());
     gameExistant.setCategory(games.getCategory());

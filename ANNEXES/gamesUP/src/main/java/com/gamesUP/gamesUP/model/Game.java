@@ -20,12 +20,19 @@ public class Game {
 private Long id;
 private String nom;
 private String image;
-private String auteur;
+private String description;
+public String getDescription() {
+	return description;
+}
+
+public void setDescription(String description) {
+	this.description = description;
+}
+
 private String genre;
 private Long numEdition;
 
 @ManyToOne
-
 @JoinColumn(name = "category_id")
 @JsonBackReference("game-category")
 private Category category;
@@ -36,9 +43,20 @@ private Category category;
 @JsonBackReference("game-publisher")
 private Publisher publisher;
 
+@ManyToOne
+@JoinColumn(name = "author_id")
+private Author author;
 
 
- //Ajout des getters et setters
+ public Author getAuthor() {
+	return author;
+}
+
+public void setAuthor(Author author) {
+	this.author = author;
+}
+
+//Ajout des getters et setters
 public Long getId() {
 	return id;
 }
@@ -62,13 +80,6 @@ public void setImage(String image) {
 	this.image = image;
 }
 
-public String getAuteur() {
-	return auteur;
-}
-
-public void setAuteur(String auteur) {
-	this.auteur = auteur;
-}
 
 public String getGenre() {
 	return genre;
@@ -101,5 +112,7 @@ public Publisher getPublisher() {
 public void setPublisher(Publisher publisher) {
 	this.publisher = publisher;
 }
+
+
 
 }

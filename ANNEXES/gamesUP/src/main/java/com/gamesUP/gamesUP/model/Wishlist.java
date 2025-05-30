@@ -11,8 +11,8 @@ import jakarta.persistence.Table;
 public class Wishlist {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	public Long id;
-	String name;
+	private Long id;
+	private String name;
 	
 	//Ajout des getters et setters
 	 public Long getId() {
