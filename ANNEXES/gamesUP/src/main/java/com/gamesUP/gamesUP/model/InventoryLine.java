@@ -2,22 +2,25 @@ package com.gamesUP.gamesUP.model;
 
 import org.hibernate.annotations.ManyToAny;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
+@Entity
 public class InventoryLine {
 	
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    @ManyToAny
+	    @ManyToOne
 	    @JoinColumn(name = "inventory_id")
 	    private Inventory inventory;
 
-	    @ManyToAny
+	    @ManyToOne
 	    @JoinColumn(name = "game_id")
 	    private Game game;
 

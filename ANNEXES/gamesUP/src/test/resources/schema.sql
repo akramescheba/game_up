@@ -40,11 +40,22 @@ CREATE TABLE avis (
      commentaire VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE purchase (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    date DATE,
+    paid BOOLEAN,
+    delivered BOOLEAN,
+    archived BOOLEAN
+);
+
 CREATE TABLE purchase_line (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    quantity INT NOT NULL,
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    prix DOUBLE,
+    jeu_id BIGINT,
+    utilisateur_id BIGINT,
+    purchase_id BIGINT,
     game_id BIGINT,
-    purchase_id BIGINT
+    FOREIGN KEY (purchase_id) REFERENCES purchase(id)
 );
 
 CREATE TABLE wishlist (

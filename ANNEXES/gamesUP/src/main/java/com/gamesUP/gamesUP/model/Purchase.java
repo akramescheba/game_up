@@ -2,6 +2,7 @@ package com.gamesUP.gamesUP.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -16,7 +17,6 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     //Ajout d'un ID
     private Long id;
-
     private Date date;
     private boolean paid;
     private boolean delivered;
@@ -73,4 +73,6 @@ public class Purchase {
     public void setLine(List<PurchaseLine> line) {
         this.line = line;
     }
+
+	
 }
