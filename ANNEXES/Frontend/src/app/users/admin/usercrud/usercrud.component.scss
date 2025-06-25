@@ -1,0 +1,333 @@
+.content {
+    margin: 50px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+    margin-top: 0.5rem;
+    color: #595b5f;
+    line-height: 1.25rem;
+    background: #212121;
+    border: 2px solid rgb(211, 21, 21);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card:hover {
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgb(130, 0, 0);
+    border-radius: 5px;
+    background-color: black;
+    transition: all 0.5s;
+}
+
+.secondAnimation {
+    --hoverContorno: #959595;
+}
+
+.secondAnimation:hover,
+.secondAnimation:focus {
+    -webkit-animation: cardAnimacion 1.4s;
+    animation: cardAnimacion 1.4s;
+    box-shadow: 0 0 0 0.8em rgba(255, 255, 255, 0);
+    border-radius: 5px;
+}
+
+@-webkit-keyframes cardAnimacion {
+    0% {
+        box-shadow: 0 0 0 0 var(--hoverContorno);
+    }
+}
+
+@keyframes cardAnimacion {
+    0% {
+        box-shadow: 0 0 0 0 var(--hoverContorno);
+    }
+}
+fa-icon {
+    font-size: 50px;
+}
+.nom {
+    font-size: 20px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: red;
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: center;
+}
+
+/* BOUTON MODIFIER ET SUPPRIMER*/
+.container-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+    gap: 20px;
+}
+.modifier-user {
+    width: 100px;
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0084ff;
+}
+.supprimer-user {
+    width: 100px;
+    color: white;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #ff0000;
+}
+
+/* STYLE DU BOUTON D'AFFICHAGE DE MODAL*/
+.btn-ajouter {
+    --hover-shadows: 16px 16px 33px #121212, -16px -16px 33px #303030;
+    --accent: rgba(255, 0, 255, 0.411);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 0, 0, 0.356);
+    border-radius: 5px;
+    background-color: #212121;
+    cursor: pointer;
+    padding: 1em 2em;
+    transition:
+        box-shadow ease-in-out 0.3s,
+        background-color ease-in-out 0.1s,
+        letter-spacing ease-in-out 0.1s,
+        transform ease-in-out 0.1s;
+    box-shadow:
+        13px 13px 10px #1c1c1c,
+        -13px -13px 10px #262626;
+    margin-bottom: 5px;
+    color: #a1a1a1;
+    font-weight: 600;
+    font-size: 14px;
+    position: fixed;
+    bottom: 20px;
+    left: 450px;
+}
+
+.btn-ajouter:hover {
+    box-shadow: var(--hover-shadows);
+}
+
+.btn-ajouter:active {
+    box-shadow:
+        var(--hover-shadows),
+        var(--accent) 0px 0px 10px 5px;
+    background-color: rgba(255, 0, 0, 0.37);
+    border: 1px solid #a1a1a1;
+    transform: scale(0.95);
+}
+
+.btn-close {
+    background-color: #ff0000;
+}
+.modal-content {
+    background-color: transparent;
+}
+/* STYLE DU TITRE*/
+
+h1 {
+    text-transform: uppercase;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-align: center;
+    color: #575151;
+}
+
+/* STYLE DU COMMUN AU FORMUAIRE D'AJOUT ET DE MODIFICATION*/
+.form-container{
+  width: 400px;
+  background: linear-gradient(#212121, #212121) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  min-width: 350px;
+  padding: 12px 16px;
+  border-radius: 5px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-container .form-group select{
+  min-width: 350px;
+  padding: 12px 16px;
+  border-radius: 5px;
+  resize: none;
+  color: #fff;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+option{
+    color: rgb(255, 255, 255);
+    background-color:#6d6b6b; 
+    border-radius: 0;
+    gap: 10px 0;
+}
+option:hover{
+      border: 1px solid #414141;
+  background-color: transparent;
+}
+.form-container .form-group option:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-group select:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #717171;
+  font-weight: 600;
+  width: 40%;
+  background: #313131;
+  border: 1px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+.container-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+/* STYLE DU BOUTON AJOUTER*/
+.btn-ajouter {
+    --hover-shadows: 16px 16px 33px #121212, -16px -16px 33px #303030;
+    --accent: rgba(255, 0, 255, 0.411);
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 0, 0, 0.356);
+    border-radius: 5px;
+    background-color: #212121;
+    cursor: pointer;
+    padding: 1em 2em;
+    transition:
+        box-shadow ease-in-out 0.3s,
+        background-color ease-in-out 0.1s,
+        letter-spacing ease-in-out 0.1s,
+        transform ease-in-out 0.1s;
+    box-shadow:
+        13px 13px 10px #1c1c1c,
+        -13px -13px 10px #262626;
+    margin-bottom: 5px;
+    color: #a1a1a1;
+    font-weight: 600;
+    font-size: 14px;
+    position: fixed;
+    bottom: 20px;
+    left: 450px;
+}
+
+.btn-ajouter:hover {
+    box-shadow: var(--hover-shadows);
+}
+
+.btn-ajouter:active {
+    box-shadow:
+        var(--hover-shadows),
+        var(--accent) 0px 0px 10px 5px;
+    background-color: rgba(255, 0, 0, 0.37);
+    border: 1px solid #a1a1a1;
+    transform: scale(0.95);
+}
+
+
+
+
+
+

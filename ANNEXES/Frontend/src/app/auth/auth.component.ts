@@ -13,11 +13,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
 })
 export class AuthComponent {
   constructor(private appService: AppService) {}
-  
-
   isButtonShow: boolean = false;
 
- btnConnection() {
+btnConnection() {
   this.isButtonShow = !this.isButtonShow;
 }
 

@@ -1,0 +1,123 @@
+<div class="dashboard-content ">
+
+    <!-- deux colonnes latérales à gauche -->
+    <div class="colonne-gauche ">
+        <button (click)="pageActive = 'games'"
+            class="btn-dashboard cursor-pointer  relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-[#F5F5F5] hover:text-[#06B6D4] h-9 rounded-md px-3">
+            <svg class="lucide lucide-rocket text-cyan-500 dark:text-cyan-400" stroke-linejoin="round"
+                stroke-linecap="round" stroke-width="2" stroke="#06B6D4" fill="none" viewBox="0 0 24 24" height="22"
+                width="22" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z">
+                </path>
+                <path
+                    d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z">
+                </path>
+                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
+                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
+            </svg>
+            dashboard
+        </button>
+        <!-- Profile utilisateur -->
+        <fa-icon [icon]="faUser" class="fa-userIcon"></fa-icon>
+        <h5 class="user-nom"> {{userName}}</h5>
+
+        <!-- Bouton  de modification des utilisateurs -->
+        <button class="button2" (click)="navigateTo('users')">
+            <svg class="user-img" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round"
+                stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="30" width="30">
+                <path
+                    d="M12,12.5c-3.04,0-5.5,1.73-5.5,3.5s2.46,3.5,5.5,3.5,5.5-1.73,5.5-3.5-2.46-3.5-5.5-3.5Zm0-.5c1.66,0,3-1.34,3-3s-1.34-3-3-3-3,1.34-3,3,1.34,3,3,3Z">
+                </path>
+            </svg>
+            Utilisateurs
+        </button>
+
+        <!-- Bouton liste des jeux -->
+        <button class="button2" (click)="navigateTo('games')">
+            <svg class="plus" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round"
+                stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="30" width="30">
+                <path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                    stroke-width="1.5"></path>
+                <path d="M8 12H16" stroke-width="1.5"></path>
+                <path d="M12 16V8" stroke-width="1.5"></path>
+            </svg>
+            Jeux
+        </button>
+
+          <!-- Bouton  liste des souhaits -->
+        <button class="button2" (click)="navigateTo('author')">
+            <svg class="feather feather-heart" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
+                stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                </path>
+            </svg>
+         Authors
+        </button>
+
+        <!-- Bouton d'ajout de Catégorie-->
+        <button class="button2" (click)="navigateTo('category')">
+
+            <svg height="30" width="30" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
+                <path fill="#2eff9d"
+                    d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z" />
+            </svg>
+            Catégories
+        </button>
+        <!-- Publications -->
+        <button class="button2" (click)="navigateTo ('publisher')">
+            <svg class="lucide lucide-newspaper text-blue-400 dark:text-blue-600" stroke-linejoin="round"
+                stroke-linecap="round" stroke-width="2" stroke="#60A5FA" fill="none" viewBox="0 0 24 24" height="22"
+                width="22" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2">
+                </path>
+                <path d="M18 14h-8"></path>
+                <path d="M15 18h-5"></path>
+                <path d="M10 6h8v4h-8V6Z"></path>
+            </svg>
+            Publishers
+        </button>
+      
+
+        <!-- Boutons lateral  des  Liste des avis -->
+        <button class="button2" (click)="navigateTo ('avis')">
+            <svg class="lucide lucide-star text-orange-400 dark:text-orange-600" stroke-linejoin="round"
+                stroke-linecap="round" stroke-width="2" stroke="#FB923C" fill="#FB923C" viewBox="0 0 24 24" height="22"
+                width="22" xmlns="http://www.w3.org/2000/svg">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+            </svg>
+            Liste des avis
+        </button>
+            <!-- Boutons lateral  des  Purchase -->
+        <button class="button2" (click)="navigateTo ('purchase')">
+            <svg class="lucide lucide-star text-orange-400 dark:text-orange-600" stroke-linejoin="round"
+                stroke-linecap="round" stroke-width="2" stroke="#FB923C" fill="#FB923C" viewBox="0 0 24 24" height="22"
+                width="22" xmlns="http://www.w3.org/2000/svg">
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+            </svg>
+            Purchase
+        </button>
+        <!-- Boutons lateral  de déconnexion-->
+        <button class="button2" (click)="deconnexion()">
+            <svg class="deconnection" viewBox="0 0 512 512" stroke-linejoin="round" stroke-linecap="round"
+                stroke-width="2" stroke="#FFFF" fill="none" height="22" width="22">
+                <path
+                    d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                </path>
+            </svg>
+            Déconnection
+        </button>
+
+    </div>
+    <div class="colonne-droite">
+<router-outlet/>
+
+    </div>
+</div>

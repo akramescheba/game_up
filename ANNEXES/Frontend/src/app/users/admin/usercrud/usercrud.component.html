@@ -1,0 +1,97 @@
+<div class="content">
+     <!--BOUTON D'AFFICHAGE DU MODAL -->
+    <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Ajouter un jeu
+    </button>
+ <!--  AFFICHAGE DE LISTE DE USERS-->
+
+    <div class="firstAnimation" *ngFor="let user of userList">
+        <div class="secondAnimation" *ngIf="!isDisplayEditCard">
+            <div class="card">
+                <fa-icon [icon]="faUser"></fa-icon>
+                <div class="nom">
+                    {{user.nom}}
+                </div>
+                <div class="info">
+                    <div class="id">
+                        Identifiant: {{user.id}}
+                    </div>
+                    <div class="email">
+                        Email : {{user.email}}
+                    </div>
+                    Rôle : {{user.role}}
+                </div>
+                <div class="container-btn">
+                    <button class="modifier-user" (click)="displayEditCard(user)">Modifier</button>
+                    <button class="supprimer-user" (click)=" deleteUserById(user.id)">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!--  FORMULAIRE DE MODIFICATION DE USER-->
+    <div class="edit-card">
+        <div class="form-container" *ngIf="isDisplayEditCard">
+            <form class="form" (ngSubmit)="patchUser()" *ngIf="selectedUser">
+                <h1>Modifier de l'utilisateur</h1>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" [(ngModel)]="selectedUser.nom"
+                        placeholder="Renseignez le nom de l'utilisateur" required>
+                    <label for="email">email</label>
+                    <input type="email" name="email" [(ngModel)]="selectedUser.email"
+                        placeholder="Renseignez le nom de l'email" required>
+                    <label for="password">Mot de passe</label>
+                    <input type="password" name="password" [(ngModel)]="selectedUser.password"
+                        placeholder="Confimer le mot de passe de l'utilisateur" required>
+                    <label for="role">Rôle</label>
+                    <select class="select" [(ngModel)]="selectedUser.role" name="role">
+                        <option value="client">client</option>
+                        <option value="administrateur">administrateur</option>
+                    </select>
+                </div>
+                <div class="container-btn">
+                    <button class="form-submit-btn" type="submit">Valider</button>
+                    <button class="form-submit-btn" type="button" onclick="location.reload()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--  FORMULAIRE DE D'AJOUT DE USER-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog form-container ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Ajouter un utilisateur</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <form class="form" [formGroup]="userForm" (ngSubmit)="postUser()">
+                    <div class="form-group">
+
+                        <label for="nom">Nom</label>
+                        <input type="text" formControlName="nom" id="nom" name="nom" placeholder="Renseignez votre nom"
+                            required>
+                        <label for="email">Email</label>
+                        <input type="email" formControlName="email" id="email" name="email"
+                            placeholder="Renseignez votre  email" required>
+                        <label for="password">Mot de passe</label>
+                        <input type="password" formControlName="password" id="password" name="password"
+                            placeholder="Renseignez votre mot de passe" required>
+                                <label for="password">Confirmer le mot de passe</label>
+                        <input type="password" formControlName="repassword" id="repassword" name="repassword"
+                            placeholder="Renseignez à nouveau votre mot de passe" required>
+                        <label for="role">Rôle</label>
+                        <select class="select" type="dropbox" formControlName="role" name="role" id="role">
+                            <option value="client">client</option>
+                            <option value="administarteur">administarteur</option>
+                        </select>
+                    </div>
+
+                    <button class="form-submit-btn" type="submit">Ajouter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="home-page">
+       <!--BARRE DE RECHERCHE-->
+    <div class="form">
+        <input class="input" type="text" [(ngModel)]="searchWord" placeholder="Saisissez un mot" />
+        <span class="input-border"></span>
+    </div>
+
+  
+   <!--  AFFICHAGE DE LISTE DE JEU-->
+    <div class="content" *ngIf="!isDisplayDetailCard">
+        <div class="container noselect" *ngFor="let game of getFilteredGames()" (click)="selectGame(game)"
+            [class.selected]="game.id === selectedGame?.id">
+            <div class="canvas">
+                <div class="tracker tr-1"></div>
+                <div class="tracker tr-2"></div>
+                <div class="tracker tr-3"></div>
+                <div class="tracker tr-4"></div>
+                <div class="tracker tr-5"></div>
+                <div class="tracker tr-6"></div>
+                <div class="tracker tr-7"></div>
+                <div class="tracker tr-8"></div>
+                <div class="tracker tr-9"></div>
+
+                <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
+                    <div class="card-content">
+                        <div class="card-glare"></div>
+                        <div class="cyber-lines">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <p id="prompt">{{ game.nom }}</p>
+                        <div class="title">{{ game.nom }}</div>
+
+                        <div class="glowing-elements">
+                            <div class="glow-1"></div>
+                            <div class="glow-2"></div>
+                            <div class="glow-3"></div>
+                        </div>
+
+                        <div class="subtitle">
+                            <div class="genre">Auteur: {{ game.author }}</div>
+                            <div class="genre">Genre: {{ game.genre }}</div>
+                            <span>ID: {{ game.id }}</span>
+                            <span class="highlight">Édition: {{ game.numEdition }}</span>
+                        </div>
+
+                        <div class="card-particles">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+
+                        <div class="corner-elements">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AFFICHAGE DE DETAIL DES JEUX-->
+    <div class="details">
+        <div class="display" *ngIf="isDisplayDetailCard">
+    <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <button class="button" (click)="isDisplayDetailCard=false">
+                <span class="X"></span>
+                <span class="Y"></span>
+                <div class="close">Cliquer pour fermer la fenêtre </div>
+            </button>
+            <div class="header">
+                <div class="display-content">
+                    <img class="image" src="{{ selectedGame?.image }}">
+                    <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
+                    <div class="text">
+                        <p class="text">Identifiant : {{ selectedGame?.id }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author }}</p>
+                        <p class="text">Genre : {{ selectedGame?.genre }}</p>
+                        <p class="text">Description : {{ selectedGame?.description }}</p>
+                        <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
+                    </div>
+                    <div class="container-button">
+                        <input value="favorite-button" name="favorite-checkbox" id="favorite" checked="checked"
+                            type="checkbox" />
+                        <label class="container addbutton" for="favorite">
+                            <svg class="feather feather-heart" stroke-linejoin="round" stroke-linecap="round"
+                                stroke-width="2" stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24"
+                                width="24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                </path>
+                            </svg>
+                            <div class="action">
+
+                                <span class="option-1">Ajouter à la wishlist</span>
+                                <span class="option-2">Rétirer de la wishlist</span>
+                            </div>
+                        </label>
+                        <button class="purchase">
+                            Commander
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,193 @@
+<div class="home-page">
+    <div class="form">
+        <input class="input" type="text" [(ngModel)]="searchWord" placeholder="Saisissez un mot" />
+        <span class="input-border"></span>
+    </div>
+    <!--BOUTON D'AFFICHAGE DU MODAL D'AJOU DE JEU-->
+    <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Créer un jeu
+    </button>
+
+   <!--  AFFICHAGE DE LISTE DE JEU-->
+    <div class="content" *ngIf="!isDisplayDetailCard">
+        <div class="container noselect" *ngFor="let game of getFilteredGames()" (click)="selectGame(game)"
+            [class.selected]="game.id === selectedGame?.id">
+            <div class="canvas">
+                <div class="tracker tr-1"></div>
+                <div class="tracker tr-2"></div>
+                <div class="tracker tr-3"></div>
+                <div class="tracker tr-4"></div>
+                <div class="tracker tr-5"></div>
+                <div class="tracker tr-6"></div>
+                <div class="tracker tr-7"></div>
+                <div class="tracker tr-8"></div>
+                <div class="tracker tr-9"></div>
+                <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
+                    <div class="card-content">
+                        <div class="card-glare"></div>
+                        <div class="cyber-lines">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+                        <p id="prompt">{{ game.nom }}</p>
+                        <div class="title">{{ game.nom }}</div>
+
+                        <div class="glowing-elements">
+                            <div class="glow-1"></div>
+                            <div class="glow-2"></div>
+                            <div class="glow-3"></div>
+                        </div>
+
+                        <div class="subtitle">
+                            <div class="genre">Auteur: {{ game?.author?.name }}</div>
+                            <div class="genre">Genre: {{ game.genre }}</div>
+                            <span>ID: {{ game.id }}</span>
+                            <span class="highlight">Édition: {{ game.numEdition }}</span>
+                        </div>
+
+                        <div class="card-particles">
+                            <span></span><span></span><span></span>
+                            <span></span><span></span><span></span>
+                        </div>
+
+                        <div class="corner-elements">
+                            <span></span><span></span><span></span><span></span>
+                        </div>
+
+                        <div class="scan-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AFFICHAGE DE DETAIL DES JEUX-->
+    <div class="details" *ngIf="!isDisplayEdit">
+        <div class="display" *ngIf="isDisplayDetailCard">
+           <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <button class="button" (click)="isDisplayDetailCard=false">
+                <span class="X"></span>
+                <span class="Y"></span>
+                <div class="close">Cliquer pour fermer la fenêtre </div>
+            </button>
+            <div class="header">
+                <div class="display-content">
+                    <img class="image" src="{{ selectedGame?.image }}">
+                    <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
+                    <div class="text">
+                        <p class="text">Identifiant : {{ selectedGame?.id }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
+                        <p class="text">Genre : {{ selectedGame?.genre }}</p>
+                        <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
+                        <p class="text">Catégorie : {{ selectedGame?.category?.type }}</p>
+                        <p class="text">Description : {{ selectedGame?.description }}</p>
+                        <p class="text">Publié par : {{ selectedGame?.publisher?.name }}</p>
+                    </div>
+                    <div class="container-button">
+                        <!-- <button class="ajout-souhaits" (click)="ajoutWishList(selectedGame)">
+                            ajouter à mes souhaits
+                        </button> -->
+                        <button class="form-edit-btn" (click)="displayEditForm()">
+                            Modifier
+                        </button>
+                        <button class="form-delete-btn" (click)="deleteGameById()">
+                            Supprimer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  FORMULAIRE DE MODIFICATION DE JEU-->
+    <div class="edit-card" *ngIf="isDisplayEdit">
+        <div class="form-container">
+            <form class="form" *ngIf="selectedGame" (ngSubmit)="updatePartialGame()">
+                <h1 class="modal-title">Modifier un jeu</h1>
+
+                <div class="form-group">
+                    <label for="image">Lien de l'image</label>
+                    <input type="text" name="image" [(ngModel)]="selectedGame.image"
+                        placeholder="Insérez un lien vers l'image du jeu" required>
+
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" [(ngModel)]="selectedGame.nom" placeholder="Renseignez le nom du jeu"
+                        required>
+
+                    <label for="author">Auteur</label>
+                    <select name="author.id" [(ngModel)]="selectedAuthorId" required>
+                        <option [value]="author.id" *ngFor="let author of listAuthor">{{ author.name }}</option>
+                    </select>
+
+                    <label for="genre">Genre</label>
+                    <input type="text" name="genre" [(ngModel)]="selectedGame.genre" placeholder="Renseignez le genre"
+                        required>
+
+                    <label for="category">Catégorie</label>
+                    <select name="categoryId" [(ngModel)]="selectedCategoryId" required>
+                        <option [value]="category.id" *ngFor="let category of listCategory">{{ category.type }}</option>
+                    </select>
+
+                    <label for="edition">Edition</label>
+                    <input type="number" name="numEdition" [(ngModel)]="selectedGame.numEdition"
+                        placeholder="Numéro d'édition" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Ajoutez une description</label>
+                    <textarea name="description" [(ngModel)]="selectedGame.description" rows="5" required></textarea>
+                </div>
+
+                <div class="container-btn">
+                    <button class="form-submit-btn" type="submit">Modifier</button>
+                    <button class="form-cancel-btn" type="button">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--  FORMULAIRE D'AJOUT DE JEU-->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog form-container ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title" id="staticBackdropLabel">Crée un jeu</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form" [formGroup]="gameForm" (ngSubmit)="postGame()">
+                    <div class="form-group">
+                        <label for="image">Lien de l'image</label>
+                        <input type="text" formControlName="image" id="image"
+                            placeholder="Inserez un lien vers l'image du jeu"
+                            required='veillez remplir tous les champs'>
+                        <label for="nom">Nom</label>
+                        <input type="text" formControlName="nom" id="nom" placeholder="Renseignez le nom du jeu"
+                            required>
+                        <label for="author">Auteur</label>
+                        <select formControlName="authorId" id="authorId">
+                            <option *ngFor="let author of listAuthor" [value]="author.id">{{ author.name }}
+                            </option>
+                        </select>
+                        <label for="genre">Genre</label>
+                        <input type="text" formControlName="genre" id="genre" placeholder="Renseignez le genre"
+                            required>
+
+                        <label for="numEdition">Edition</label>
+                        <input type="number" formControlName="numEdition" id="numEdition"
+                            placeholder="Renseignez le numéro d'édition" required>
+                        <label for="categoryId">Catégorie</label>
+                        <select id="categoryId" formControlName="categoryId" placeholder="catégotie">
+                            <option [value]="category.id" *ngFor="let category of listCategory">{{category.type}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Ajoutez une description</label>
+                        <textarea formControlName="description" id="description" rows="20" cols="50"
+                            required></textarea>
+                    </div>
+                    <button class="form-submit-btn" type="submit">Créer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

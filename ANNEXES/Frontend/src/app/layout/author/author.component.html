@@ -1,0 +1,128 @@
+<!-- STRUCTURE GLOBALE DE LA PAGE AUTEUR-->
+<div class="category-content">
+    <div>
+        <div class="container-warning" *ngIf="isDisplayAuthorDetails">
+            <div *ngFor="let author of ListAuthor">
+                <div class="warning" *ngIf="isDisplayWarning">
+                    <h1>ATTENTION⚠️</h1>
+                    <p>Vous êtes sur le point de supprimer l'auteur {{author.name}}</p>
+                    <p>Cette action est irréversible et supprimera tous les jeux liés à cet auteur</p>
+                    <div class="container-btn-warning">
+                        <a class="supprimer" (click)="deleteAuthorById(author.id)">Supprimer</a>
+                        <a class="annuler" (click)="displayWarningForm()">Annuler</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container-header">
+                <div class="contenair-button" *ngIf="!isDisplayWarning">
+                    <div>
+                        <a class="modifier" (click)="displayEditCard()">Modifier</a>
+                    </div>
+                    <div>
+                        <a class="supprimer" (click)="displayWarningForm()">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- AFFICHAGE DE LA LISTE DES AUTEUR-->
+    <div class="category-content" *ngIf="!isDisplayAuthorDetails ">
+        <div class="category-card" *ngFor="let author of ListAuthor" (click)="displayAuthorDetails()">
+            <div class="card-body" (click)="selectAuthorId(author)">
+                <h5 class="card-title">{{author.name}}</h5>
+            </div>
+        </div>
+    </div>
+    <!-- AFFICHAGE DE LA LISTE DES JEUX DE CHAQUE AUTEUR-->
+    <div>
+        <div class="content" *ngIf="isDisplayAuthorDetails && selectedAuthor">
+            <div class="container noselect" *ngFor="let game of selectedAuthor?.games">
+                <div class="canvas">
+                    <div class="tracker tr-1"></div>
+                    <div class="tracker tr-2"></div>
+                    <div class="tracker tr-3"></div>
+                    <div class="tracker tr-4"></div>
+                    <div class="tracker tr-5"></div>
+                    <div class="tracker tr-6"></div>
+                    <div class="tracker tr-7"></div>
+                    <div class="tracker tr-8"></div>
+                    <div class="tracker tr-9"></div>
+                    <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
+                        <div class="category-">
+                            <div class="card-glare"></div>
+                            <div class="cyber-lines">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                            <p id="prompt">{{ game.nom }}</p>
+                            <div class="title">{{ game.nom }}</div>
+                            <div class="glowing-elements">
+                                <div class="glow-1"></div>
+                                <div class="glow-2"></div>
+                                <div class="glow-3"></div>
+                            </div>
+                            <div class="subtitle">
+                                <div class="genre">Auteur: {{ game.author }}</div>
+                                <div class="genre">Genre: {{ game.genre }}</div>
+                                <span>ID: {{ game.id }}</span>
+                                <span class="highlight">Édition: {{ game.numEdition }}</span>
+                            </div>
+                            <div class="card-particles">
+                                <span></span><span></span><span></span>
+                                <span></span><span></span><span></span>
+                            </div>
+                            <div class="corner-elements">
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                            <div class="scan-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMULAIRE D'AJOUT D'UN AUTEUR  -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog form-container ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title " id="staticBackdropLabel">Créer un auteur</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form class="form" [formGroup]="authorForm" (ngSubmit)="postAuthor()">
+                    <div class="form-group">
+                        <label for="type">Nom de l'auteur</label>
+                        <input type="text" name="name" formControlName="name">
+                    </div>
+                    <button class="form-submit-btn" type="submit" onclick="location.reload()">Créer</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- FORMULAIRE DE MODIFICATION D'UN AUTEUR  -->
+    <div class="edit-card">
+        <div class="form-container" *ngIf="isDisplayEditCard">
+            <form class="form" (ngSubmit)="updateAuthor()" *ngIf="selectedAuthor">
+                <h1 class="modal-title">Modifier un auteur</h1>
+                <div class="form-group">
+                    <label for="type">Nom de l'auteur</label>
+                    <input type="text" name="name" [(ngModel)]="selectedAuthor.name"
+                        placeholder="Renseignez le type de catégorie" required>
+                </div>
+                <div class="container-btn">
+                    <button class="form-submit-btn" type="submit" onclick="location.reload()">Valider</button>
+                    <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOUTON DE CREATION D'UN AUTEUR. MODEL IMPORTE De From Uiverse.io by drewsephski  -->
+    <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Créer uun auteur
+    </button>
+</div>

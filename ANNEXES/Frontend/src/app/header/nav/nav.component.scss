@@ -1,0 +1,91 @@
+nav{
+position: fixed;
+width: 100%;
+z-index: 9999;
+}
+/* Bouton de Déconnexion wishlist et catégories From Uiverse.io by kennyotsu-monochromia */
+.Btn,.liste-souhaits,
+.liste-category {
+  gap: 20px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: .9rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+ display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding:0 20px;
+  height: 45px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 0, 0, 0.119);
+  color: #251c1cb0;
+
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  width: 100%;
+  z-index: 9999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 8vh;
+  border-radius: 1px ;
+    // background: red;
+}
+
+img {
+  height: 70px;
+}
+
+
+
+/* Bouton search From Uiverse.io by satyamchaudharydev */ 
+.form {
+ --width-of-input: 200px;
+ --border-height: 1px;
+ --border-before-color: rgba(221, 221, 221, 0.39);
+ --border-after-color: red;
+ --input-hovered-color: #4985e01f;
+ position: relative;
+ width: var(--width-of-input);
+}
+/* styling of Input */
+.input {
+ color: #908f8f;
+ font-size: 0.9rem;
+ background-color: transparent;
+ width: 100%;
+ box-sizing: border-box;
+ padding-inline: 0.5em;
+ padding-block: 0.7em;
+ border: none;
+ border-bottom: var(--border-height) solid var(--border-before-color);
+}
+/* styling of animated border */
+.input-border {
+ position: absolute;
+ background: var(--border-after-color);
+ width: 0%;
+ height: 2px;
+ bottom: 0;
+ left: 0;
+ transition: 0.3s;
+}
+/* Hover on Input */
+input:hover {
+ background: var(--input-hovered-color);
+}
+
+input:focus {
+ outline: none;
+}
+/* here is code of animated border */
+input:focus ~ .input-border {
+ width: 100%;
+}

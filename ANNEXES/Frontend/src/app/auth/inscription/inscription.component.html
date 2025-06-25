@@ -1,30 +1,33 @@
-<div class="contente" *ngIf="isButtonShow">
-    <!-- From Uiverse.io by VIJAYAACHI --> 
+<!-- FORMULAIRE D'INSCRIPTION From Uiverse.io by VIJAYAACHI -->
 <div class="form-container">
   <p class="title">Créer un compte</p>
-  <form class="form">
+  <form class="form" [formGroup]="userForm" (ngSubmit)=" inscription()">
     <div class="input-group">
       <label for="name">Name</label>
-      <input placeholder="" id="username" name="username" type="text" />
+      <input class="input" id="nom" formControlName="nom" type="text" required>
     </div>
     <div class="input-group">
-      <label for="phone">Phone</label>
-      <input placeholder="" id="phone" name="phone" type="phone" />
       <label for="email">Email</label>
-      <input placeholder="" id="email" name="email" type="email" />
-      <label for="location">Location</label>
-      <input placeholder="" type="email" />
+      <input class="input" id="email" formControlName="email" type="text" required>
+      <label for="email">Rôle</label>
+      <select class="input" type="role" id="select" required formControlName="role">
+        <option value="client">
+          client
+        </option>
+      </select>
+      <label for="password">Définir votre mot de passe</label>
+      <input class="input" id="password" formControlName="password" type="password" required>
+      <label for="password">Confirmer votre mot de passe</label>
+      <input class="input" id="repassword" formControlName="repassword" type="password" required>
     </div>
     <button style="margin-top:6%;" class="sign">Submit</button>
   </form>
   <div class="social-message">
     <div class="line"></div>
-    <p class="message">Entre Details to view Virtual Tour</p>
+    <p class="message">Avez vous déja un compte?</p>
     <div class="line"></div>
   </div>
-  <p class="signup">Avez vous déja un comptet?
-		<a type="button" (click)="btnConnection()">Connectez-vous</a>
-	</p>
-</div>
-	
+  <p class="signup">
+    <a type="button" (click)="btnConnection()">Connectez-vous</a>
+  </p>
 </div>

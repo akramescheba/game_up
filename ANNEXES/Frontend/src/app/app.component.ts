@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import {NavComponent} from "./nav/nav.component";
-import{GameListComponent} from './layout/game-list/game-list.component';
-import {HomeComponent} from "./home/home.component"
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MainComponent } from "./header/main/main.component";
+import { EmptyComponent } from "./header/empty/empty.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent,GameListComponent, HomeComponent],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'Frontend';
-  pageActive : String = "home"
+  title = 'GameUp';
 }

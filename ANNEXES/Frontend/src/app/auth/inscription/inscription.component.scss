@@ -41,8 +41,7 @@
   color: rgba(156, 163, 175, 1);
   margin-bottom: 4px;
 }
-
-.input-group input {
+.input-group input, .input-group select {
   width: 290px;
   border-radius: 5px;
   border: 1px solid rgba(55, 65, 81, 1);

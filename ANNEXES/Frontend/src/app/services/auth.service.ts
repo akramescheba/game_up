@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+import {ToastrService} from 'ngx-toastr'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private router: Router ) {}
-
+  constructor(private router: Router, private toastr  : ToastrService ) {}
   logIn(): void {
     localStorage.setItem('token', 'loggedIn');
   }
 
   logOut(): void {
     localStorage.removeItem('token');
-    // this.toastr.success('Vous êtes déconnecté');
-    this.router.navigate(['/login']);
+    this.toastr.success('Vous êtes déconnecté');
+    this.router.navigate(['/auth']);
   }
-
-  getNom(){
+  getUserName(){
     return localStorage.getItem('nom');
   }
 
-  getRole(){
+  getUserRole(){
     return localStorage.getItem('role');
   }
 }

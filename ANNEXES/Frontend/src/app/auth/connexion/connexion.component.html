@@ -1,27 +1,26 @@
 
-    <!-- From Uiverse.io by Yaya12085 --> 
-<div class="form-container" *ngIf="!isButtonShow">
-	<p class="title">Login</p>
+    <!-- FORMULAIRE DE CONNEXION From Uiverse.io by Yaya12085 --> 
+<div class="form-container" >
+	<p class="title">Connexion</p>
 	<form [formGroup]="loginForm" (ngSubmit)=" Connection()" class="form">
 		<div class="input-group">
-			<label for="username">Username</label>
+			<label for="username">nom d'utilisateur</label>
 			<input type="email" formControlName="email" placeholder="visiplus@email.com"  required>
 		</div>
 		<div class="input-group">
-			<label for="password">Password</label>
+			<label for="password">Mot de passe</label>
 			<input type="password" formControlName="psw" placeholder="Mot de passe "  required>
 			<div class="forgot">
-				<!-- <a rel="noopener noreferrer" href="#">Forgot Password ?</a> -->
 			</div>
 		</div>
-		<button class="sign">Sign in</button>
+		<button class="sign">Se connecter</button>
 	</form>
-	<div class="social-message">
+		<div class="social-message">
 		<div class="line"></div>
-		<p class="message">Login with social accounts</p>
+		<p class="message">Vous n'avez pas de compte?</p>
 		<div class="line"></div>
 	</div>
-	<p class="signup">Vous n'avez pas de compte?
-		<a type="button" (click)="btnInscription()">Connectez-vous</a>
+	<p class="signup">
+		<a type="button" (click)="btnInscription()">S'inscrire</a>
 	</p>
 </div>

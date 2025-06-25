@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a>
+      <div class="icon">
+        <img src={{logo}} alt="Logo" class="Logo">
+      </div>
+    </a>
+    <a class="liste-souhaits" (click)="onWishlist()">
+      wishlist
+    </a>
+    <a class="liste-category" (click)="onCategory()">
+      Catégories
+    </a>
+    <button class="Btn" (click)="logout()">
+      <div class="text"> Déconnexion</div>
+    </button>
+
+  </div>
+</nav>

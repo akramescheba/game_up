@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class AppService {
   private urlApiAllGame = 'http://localhost:8082/jeux';
-  private urlApiAllUsers = 'http://localhost:8082/users';
-  private urlApiAllUserById = 'http://localhost:8082/user';
+  private urlApiGame = 'http://localhost:8082/jeu';
+
 
   isBtnShow: boolean = false;
   isButtonShow() {
@@ -16,14 +16,17 @@ export class AppService {
   }
 
   constructor(private http: HttpClient) {}
-
+  /*Méthode d'affichage, de création, de mise àjourt et de suppression des jeux dépuis la base des données */ 
   getAllGame(): Observable<any[]> {
     return this.http.get<any[]>(this.urlApiAllGame);
   }
-  getAllUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.urlApiAllUsers);
+  postGame(game: any): Observable<any> {
+    return this.http.post(this.urlApiGame, game);
   }
-  getUserById(id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.urlApiAllUsers}/${id}`);
+  updatePartialGame(gameId: number, patchGame:any): Observable<any>{
+    return this.http.patch(`${this.urlApiGame}/${gameId}`, patchGame);
+  }
+  deleteGame(gameId:number): Observable<any> {
+    return this.http.delete(`${this.urlApiGame}/${gameId}`);
   }
 }
