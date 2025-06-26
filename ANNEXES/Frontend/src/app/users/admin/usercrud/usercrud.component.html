@@ -1,10 +1,9 @@
 <div class="content">
      <!--BOUTON D'AFFICHAGE DU MODAL -->
     <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Ajouter un jeu
+        Créer un utilisateur
     </button>
  <!--  AFFICHAGE DE LISTE DE USERS-->
-
     <div class="firstAnimation" *ngFor="let user of userList">
         <div class="secondAnimation" *ngIf="!isDisplayEditCard">
             <div class="card">
@@ -23,7 +22,7 @@
                 </div>
                 <div class="container-btn">
                     <button class="modifier-user" (click)="displayEditCard(user)">Modifier</button>
-                    <button class="supprimer-user" (click)=" deleteUserById(user.id)">Supprimer</button>
+                    <button class="supprimer-user" (click)=" deleteUserById(user.id)" onclick="location.reload()">Supprimer</button>
                 </div>
             </div>
         </div>
@@ -89,7 +88,7 @@
                         </select>
                     </div>
 
-                    <button class="form-submit-btn" type="submit">Ajouter</button>
+                    <button class="form-submit-btn" type="submit" [disabled]="userForm.invalid" onclick="location.reload()">Ajouter</button>
                 </form>
             </div>
         </div>

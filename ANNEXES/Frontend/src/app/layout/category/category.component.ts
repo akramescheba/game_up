@@ -8,7 +8,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
 import { GameList, Category } from '../../models/models';
 import { CategoriesService } from '../../services/categories.service';
 
@@ -26,14 +25,26 @@ export class CategoryComponent implements OnInit {
     private categoryService: CategoriesService
   ) {}
   categoryForm!: FormGroup;
-  displayCategoryDetails: boolean = false;
   listCategory: Category[] = [];
   selectedCategory: Category | null = null;
-  isDisplayEditCard: boolean = false;
+  selectedGame: GameList|null=null;
+  isDisplayCategoryDetails: boolean = false;
   isDisplayWarning: boolean = false;
+  isDisplayEditCard: boolean = false;
+  isDisplayBtn: boolean=false;
+  isDisplayEdit: boolean=false;
+  isDisplayDetailCard: boolean=false;
+  
 
+    selectGame(game: GameList): void {
+    this.selectedGame = { ...game };
+    this.isDisplayDetailCard = true;
+  }
+  displayDeleteCategorie(category: Category){
+    this.isDisplayBtn=true
+  }
   displayDetails() {
-    this.displayCategoryDetails = !this.displayCategoryDetails;
+    this.isDisplayCategoryDetails = !this.isDisplayCategoryDetails;
   }
   displayEditCard(category: Category) {
     this.isDisplayEditCard = !this.isDisplayEditCard;

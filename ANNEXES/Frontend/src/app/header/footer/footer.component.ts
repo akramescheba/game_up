@@ -46,9 +46,13 @@ export class FooterComponent {
   }
 
   postAvis() {
+        if (this.avisForms.invalid) {
+      this.toastr.warning('🫤Veuillez remplir tous les champs correctement');
+      return;
+    }
     const formulaire = this.avisForms.value;
     this.aviService.createAvis(formulaire).subscribe((avis) => {
-      this.toastr.success('Votre avis a été envoyé');
+      this.toastr.success('😇Votre avis a été envoyé');
       console.log(this.avisForms.value);
       location.reload();
     });

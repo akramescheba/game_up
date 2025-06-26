@@ -8,7 +8,7 @@
         Créer un jeu
     </button>
 
-   <!--  AFFICHAGE DE LISTE DE JEU-->
+    <!--  AFFICHAGE DE LA LISTE DE JEU-->
     <div class="content" *ngIf="!isDisplayDetailCard">
         <div class="container noselect" *ngFor="let game of getFilteredGames()" (click)="selectGame(game)"
             [class.selected]="game.id === selectedGame?.id">
@@ -63,7 +63,7 @@
     <!-- AFFICHAGE DE DETAIL DES JEUX-->
     <div class="details" *ngIf="!isDisplayEdit">
         <div class="display" *ngIf="isDisplayDetailCard">
-           <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
             <button class="button" (click)="isDisplayDetailCard=false">
                 <span class="X"></span>
                 <span class="Y"></span>
@@ -83,9 +83,6 @@
                         <p class="text">Publié par : {{ selectedGame?.publisher?.name }}</p>
                     </div>
                     <div class="container-button">
-                        <!-- <button class="ajout-souhaits" (click)="ajoutWishList(selectedGame)">
-                            ajouter à mes souhaits
-                        </button> -->
                         <button class="form-edit-btn" (click)="displayEditForm()">
                             Modifier
                         </button>

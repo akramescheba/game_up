@@ -1,45 +1,25 @@
 <!-- STRUCTURE GLOBALE DE LA PAGE CATEGORIE-->
 <div class="category-content">
-    <div class="category-container" *ngFor="let category of listCategory">
-        <div class="container-warning" >
-            <div class="warning" *ngIf="selectedCategory?.id !== category.id && isDisplayWarning">
-                <h1>ATTENTION</h1>
-                <p>Vous êtes sur le point de supprimer la catégories {{category.type}}</p>
-                <p>Cette action est irréversible et supprimera tous les jeux de cette catégorie</p>
-                <div class="container-btn-warning">
-                    <a class="supprimer" (click)="deleteCategoryById()">Supprimer</a>
-                    <a class="annuler">Annuler</a>
-                </div>
-            </div>
-            <div class="container-header" *ngIf="selectedCategory?.id !== category.id && !isDisplayWarning">
-                <div class="contenair-button" *ngIf="displayCategoryDetails">
-                    <div>
-                        <a class="modifier" (click)="displayEditCard(category)">Modifier</a>
-                    </div>
-                    <div>
-                        <a class="supprimer" (click)="displayWarningForm()">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- BOUTON DE CREATION D'UNE CATEGORIE. MODEL IMPORTE De From Uiverse.io by drewsephski  -->
-    <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        Créer une catégorie
-    </button>
-
     <!-- AFFICHAGE DE LA LISTE DES CATEGORY {}-->
-    <div class="category-list-container" *ngIf="!displayCategoryDetails " (click)="displayDetails()">
+    <div class="category-list-container" *ngIf="!isDisplayCategoryDetails " (click)="displayDetails()">
         <div class="category-card" *ngFor="let category of listCategory" (click)="selectCategory(category)">
             <div class="card-body">
                 <h5 class="card-title">{{category.type}}</h5>
+            </div>
+            <div class="contenair-button" *ngIf="!isDisplayWarning ">
+                <div>
+                    <a class="modifier" (click)="displayEditCard(category)">Modifier</a>
+                </div>
+                <div>
+                    <a class="supprimer" (click)="displayDeleteCategorie(category)">Supprimer</a>
+                </div>
             </div>
         </div>
     </div>
     <!-- AFFICHAGE DE LA LISTE DES JEUX DANS CHAQUE CATEGORY-->
     <div>
-        <div class="content" *ngIf="displayCategoryDetails && selectedCategory">
-            <div class="container noselect" *ngFor="let game of selectedCategory?.games">
+        <div class="content" *ngIf="!isDisplayDetailCard ">
+            <div class="container noselect" *ngFor="let game of selectedCategory?.games" (click)="selectGame(game)">
                 <div class="canvas">
                     <div class="tracker tr-1"></div>
                     <div class="tracker tr-2"></div>
@@ -84,6 +64,40 @@
         </div>
     </div>
 
+    <!-- AFFICHAGE DE DETAIL DES JEUX-->
+    <div class="details" *ngIf="!isDisplayEdit">
+        <div class="display" *ngIf="isDisplayDetailCard">
+            <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <button class="button" (click)="isDisplayDetailCard=false">
+                <span class="X"></span>
+                <span class="Y"></span>
+                <div class="close">Cliquer pour fermer la fenêtre </div>
+            </button>
+            <div class="header">
+                <div class="display-content">
+                    <img class="image" src="{{ selectedGame?.image }}">
+                    <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
+                    <div class="text">
+                        <p class="text">Identifiant : {{ selectedGame?.id }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
+                        <p class="text">Genre : {{ selectedGame?.genre }}</p>
+                        <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
+                        <p class="text">Catégorie : {{ selectedGame?.category?.type }}</p>
+                        <p class="text">Description : {{ selectedGame?.description }}</p>
+                        <p class="text">Publié par : {{ selectedGame?.publisher?.name }}</p>
+                    </div>
+                    <div class="container-button">
+                        <!-- <button class="form-edit-btn" (click)="displayEditForm()">
+                            Modifier
+                        </button>
+                        <button class="form-delete-btn" (click)="deleteGameById()">
+                            Supprimer
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- FORMULAIRE D'AJOUT DES CATEGORIES  -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -99,7 +113,7 @@
                         <input type="text" name="type" formControlName="type" id="type"
                             placeholder="Saisir le type de la catégorie" required>
                     </div>
-                    <button class="form-submit-btn" type="submit" onclick="location.reload()">Créer</button>
+                    <button class="form-submit-btn" type="submit" onclick="location.reload()" [disabled]="categoryForm.invalid">Créer</button>
                 </form>
             </div>
         </div>
@@ -116,11 +130,35 @@
                         placeholder="Renseignez le type de catégorie" required>
                 </div>
                 <div class="container-btn">
-                    <button class="form-submit-btn" type="submit" onclick="location.reload()">Valider</button>
+                    <button class="form-submit-btn" type="submit" onclick="location.reload()" [disabled]="categoryForm.invalid">Valider</button>
                     <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
                 </div>
             </form>
         </div>
     </div>
+    <!-- WARNING DE SUPPRESSION DES CATEGORIES  -->
+    <div class="delete-card">
+        <div class="form-container-warning" *ngIf="isDisplayBtn">
+            <form class="form" (ngSubmit)=" deleteCategoryById()" *ngIf="selectedCategory">
+                <div class="warning-titre">
+                    <h1 class="modal-title">ATTENTION </h1><img src="/assets/waricon.png" alt="warning">
+                </div>
+                <div class="form-group">
+                    <label>Vous êtes sur le point de <a class="danger">supprimer</a> la catégorie
+                        <strong>{{selectedCategory.type}}!</strong></label>
+                    <p>Cette action est irréversible et supprimera tous les jeux de cette catégorie</p>
+                </div>
+                <div class="container-btn">
+                    <button class="form-cancel-btn" type="submit" onclick="location.reload()" >Confirmer</button>
+                    <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOUTON DE CREATION D'UNE CATEGORIE. MODEL IMPORTE De From Uiverse.io by drewsephski  -->
+    <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Créer une catégorie
+    </button>
 
 </div>

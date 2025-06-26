@@ -26,7 +26,6 @@ export class GamecrudComponent implements OnInit {
   gameForm!: FormGroup;
 
   gameList: GameList[] = [];
-
   listCategory: Category[] = [];
   listAuthor: Author[] = [];
 
@@ -73,7 +72,6 @@ export class GamecrudComponent implements OnInit {
   }
   selectGame(game: GameList): void {
     this.selectedGame = { ...game };
-
     this.isDisplayDetailCard = true;
   }
   selectedAuthorId(authorId: Author): void {

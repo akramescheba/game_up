@@ -11,11 +11,12 @@ import { CommonModule } from '@angular/common';
 import { GameList, Category } from '../models/models';
 import { ToastrService } from 'ngx-toastr';
 import { AppService } from '../services/app.service';
+import {NavComponent} from '../header/nav/nav.component'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule,NavComponent, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

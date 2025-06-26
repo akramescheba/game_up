@@ -1,44 +1,25 @@
 <!-- STRUCTURE GLOBALE DE LA PAGE AUTEUR-->
 <div class="category-content">
-    <div>
-        <div class="container-warning" *ngIf="isDisplayAuthorDetails">
-            <div *ngFor="let author of ListAuthor">
-                <div class="warning" *ngIf="isDisplayWarning">
-                    <h1>ATTENTION⚠️</h1>
-                    <p>Vous êtes sur le point de supprimer l'auteur {{author.name}}</p>
-                    <p>Cette action est irréversible et supprimera tous les jeux liés à cet auteur</p>
-                    <div class="container-btn-warning">
-                        <a class="supprimer" (click)="deleteAuthorById(author.id)">Supprimer</a>
-                        <a class="annuler" (click)="displayWarningForm()">Annuler</a>
-                    </div>
-                </div>
-            </div>
-            <div class="container-header">
-                <div class="contenair-button" *ngIf="!isDisplayWarning">
-                    <div>
-                        <a class="modifier" (click)="displayEditCard()">Modifier</a>
-                    </div>
-                    <div>
-                        <a class="supprimer" (click)="displayWarningForm()">Supprimer</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
     <!-- AFFICHAGE DE LA LISTE DES AUTEUR-->
-    <div class="category-content" *ngIf="!isDisplayAuthorDetails ">
-        <div class="category-card" *ngFor="let author of ListAuthor" (click)="displayAuthorDetails()">
-            <div class="card-body" (click)="selectAuthorId(author)">
+    <div class="category-content" *ngIf="!isDisplayAuthorDetails " (click)="displayAuthorDetails()">
+        <div class="category-card" *ngFor="let author of ListAuthor" (click)="selectAuthorId(author)">
+            <div class="card-body">
                 <h5 class="card-title">{{author.name}}</h5>
+            </div>
+            <div class="contenair-button" *ngIf="!isDisplayWarning">
+                <div>
+                    <a class="modifier" (click)="displayEditCard()">Modifier</a>
+                </div>
+                <div>
+                    <a class="supprimer" (click)="displayWarningForm(author)">Supprimer</a>
+                </div>
             </div>
         </div>
     </div>
     <!-- AFFICHAGE DE LA LISTE DES JEUX DE CHAQUE AUTEUR-->
     <div>
-        <div class="content" *ngIf="isDisplayAuthorDetails && selectedAuthor">
-            <div class="container noselect" *ngFor="let game of selectedAuthor?.games">
+        <div class="content" *ngIf="!isDisplayDetailCard">
+            <div class="container noselect" *ngFor="let game of selectedAuthor?.games" (click)="selectGame(game)">
                 <div class="canvas">
                     <div class="tracker tr-1"></div>
                     <div class="tracker tr-2"></div>
@@ -83,6 +64,41 @@
         </div>
     </div>
 
+    <!-- AFFICHAGE DE DETAIL DES JEUX-->
+    <div class="details" *ngIf="!isDisplayEdit">
+        <div class="display" *ngIf="isDisplayDetailCard">
+            <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <button class="button" (click)="isDisplayDetailCard=false">
+                <span class="X"></span>
+                <span class="Y"></span>
+                <div class="close">Cliquer pour fermer la fenêtre </div>
+            </button>
+            <div class="header">
+                <div class="display-content">
+                    <img class="image" src="{{ selectedGame?.image }}">
+                    <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
+                    <div class="text">
+                        <p class="text">Identifiant : {{ selectedGame?.id }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
+                        <p class="text">Genre : {{ selectedGame?.genre }}</p>
+                        <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
+                        <p class="text">Catégorie : {{ selectedGame?.category?.type }}</p>
+                        <p class="text">Description : {{ selectedGame?.description }}</p>
+                        <p class="text">Publié par : {{ selectedGame?.publisher?.name }}</p>
+                    </div>
+                    <div class="container-button">
+                        <!-- <button class="form-edit-btn" (click)="displayEditForm()">
+                            Modifier
+                        </button>
+                        <button class="form-delete-btn" (click)="deleteGameById()">
+                            Supprimer
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- FORMULAIRE D'AJOUT D'UN AUTEUR  -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -97,7 +113,7 @@
                         <label for="type">Nom de l'auteur</label>
                         <input type="text" name="name" formControlName="name">
                     </div>
-                    <button class="form-submit-btn" type="submit" onclick="location.reload()">Créer</button>
+                    <button class="form-submit-btn" type="submit" onclick="location.reload()" [disabled]="authorForm.invalid">Créer</button>
                 </form>
             </div>
         </div>
@@ -120,7 +136,25 @@
             </form>
         </div>
     </div>
-
+    <!-- WARNING DE SUPPRESSION DES AUTEURS  -->
+    <div class="delete-card">
+        <div class="form-container-warning" *ngIf="isDisplayWarning">
+            <form class="form" (ngSubmit)=" deleteAuthorById(selectedAuthor.id)" *ngIf="selectedAuthor">
+                <div class="warning-titre">
+                    <h1 class="modal-title">ATTENTION </h1><img src="/assets/waricon.png" alt="warning">
+                </div>
+                <div class="form-group">
+                    <label>Vous êtes sur le point de <a class="danger">supprimer</a> la catégorie
+                        <strong>{{selectedAuthor.name}}!</strong></label>
+                    <p>Cette action est irréversible et supprimera tous les jeux de cette catégorie</p>
+                </div>
+                <div class="container-btn">
+                    <button class="form-cancel-btn" type="submit" onclick="location.reload()">Confirmer</button>
+                    <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <!-- BOUTON DE CREATION D'UN AUTEUR. MODEL IMPORTE De From Uiverse.io by drewsephski  -->
     <button type="button" class="btn-ajouter" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Créer uun auteur

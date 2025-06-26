@@ -168,21 +168,32 @@ h1 {
 }
 
 /* STYLE DU COMMUN AU FORMUAIRE D'AJOUT ET DE MODIFICATION*/
-.form-container{
+.modal.fade {
+  justify-content: center;
+  background: #000000ea;
+  opacity: 100%;
+}
+.form-container {
+  top: 10%;
   width: 400px;
-  background: linear-gradient(#212121, #212121) padding-box,
-              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  background:
+    linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(145deg, rgb(255, 0, 0) 35%, #e81cff, #40c9ff) border-box;
   border: 2px solid transparent;
   padding: 32px 24px;
   font-size: 14px;
   font-family: inherit;
   color: white;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
   box-sizing: border-box;
-  border-radius: 16px;
+  border-radius: 5px;
+  z-index: 999;
+  position: relative;
 }
+
 
 .form-container button:active {
   scale: 0.95;
