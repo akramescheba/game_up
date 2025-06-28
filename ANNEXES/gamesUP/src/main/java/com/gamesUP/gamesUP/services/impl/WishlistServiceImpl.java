@@ -1,5 +1,4 @@
 package com.gamesUP.gamesUP.services.impl;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -52,8 +51,7 @@ public class WishlistServiceImpl implements WishlistService{
 	@Override
 	public void deleteWishlist(Long id) {
 		wishlistRepository.deleteById(id);
-		
-	}
+		}
 
 	}
 

@@ -1,11 +1,12 @@
 package com.gamesUP.gamesUP.model;
-
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -19,12 +20,15 @@ public class Category {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String type;
-
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
-	@JsonManagedReference("game-category")
-	private List<Game> games;
 	
-//Ajout des getters et setters
+	@OneToMany(mappedBy = "category",cascade= CascadeType.ALL )
+	@JsonIgnoreProperties("category")
+	private List<Game> games ;
+	
+	public Category(){};
+	
+
+    /*AJOUT DES GETTERS ET SETTERS*/
 	public String getType() {
 		return type;
 	}

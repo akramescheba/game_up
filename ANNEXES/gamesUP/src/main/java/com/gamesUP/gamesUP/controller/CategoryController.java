@@ -15,23 +15,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Category;
 import com.gamesUP.gamesUP.services.CategoryService;
 
+import vues.JsonCategoryView;
+import vues.JsonGameView;
+
 
 @RestController
+@JsonIgnoreProperties("category")
 @CrossOrigin(origins={"http://localhost:4200"},  allowedHeaders = "*")
 public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 	
 	@GetMapping("/categories")
+
 	public List<Category> getAllCategories() {
 		return categoryService.findAllCategories();	
 	};
 	
 	@GetMapping("/category/{id}")
+
 	public Category getCategoryById(@PathVariable("id") Long id) {
 		Category category = categoryService.findCategoryById(id);
 		

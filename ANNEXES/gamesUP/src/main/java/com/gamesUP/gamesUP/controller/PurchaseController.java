@@ -26,7 +26,7 @@ public class PurchaseController {
 	  private PurchaseService purchaseService;
 
 	  //AJOUT DU VERBE GET - POUR AFFICHER  TOUTE LA LISTE D'ACHATS
-	  @GetMapping("/purchase")
+	  @GetMapping("/purchases")
 	  @ResponseStatus(code = HttpStatus.OK)
 	  public List<Purchase> getAllPurchase() {
 	    return purchaseService.getAllPurchase();

@@ -2,28 +2,34 @@ package com.gamesUP.gamesUP.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
+import vues.JsonPublisherView;
 
 @Entity
+
+
+@Table(name = "publisher")
 public class Publisher {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	
-	@OneToMany(mappedBy = "publisher" , cascade = CascadeType.ALL)
-	@JsonManagedReference("game-publisher")
+	@OneToMany(mappedBy = "publisher")
+	@JsonIgnoreProperties("publisher")
 	private List<Game> games;
 	
-	 //Ajout des getters et setters
+	public Publisher() {};
+	
+	//Ajout des getters et setters
 
 	public Long getId() {
 		return id;

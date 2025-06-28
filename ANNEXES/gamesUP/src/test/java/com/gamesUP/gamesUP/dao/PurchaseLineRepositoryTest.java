@@ -18,6 +18,7 @@ public class PurchaseLineRepositoryTest {
 	
 	  @Autowired
 	  private PurchaseLineService purchaseLineService;
+	  @Test
 	  void shouldGetAllPurchaseLine() {
 		    List<PurchaseLine> purchaseLine = purchaseLineService.getAllPurchaseLine();
 		    assertEquals(1, purchaseLine.size());
@@ -31,19 +32,24 @@ public class PurchaseLineRepositoryTest {
 	    void shouldCreatePurchaseLine() {
 	    	PurchaseLine newPurchaseLine= new PurchaseLine();
 	    	newPurchaseLine.setId(1);
+	    	purchaseLineService.createPurchaseLine(newPurchaseLine);
 	      assertEquals(1, newPurchaseLine.getId());
 	    }
 	    @Test
-	    void shouldUpdatePurchase() {
+	    void shouldUpdatePurchaseLine() {
 	    	PurchaseLine purchaseLine = purchaseLineService.getPurchaseLineById(1);
 	    	PurchaseLine newPurchaseLine = new PurchaseLine();
-	    	newPurchaseLine.setId(1);;
+	    	newPurchaseLine.setId(1);
 	    	purchaseLineService.updatePurchaseLine(1, purchaseLine);
+
 	    }
 
 	    @Test
-	    void shouldDeletePurchase() {
+	    void shouldDeletePurchaseLine() {
+	    	PurchaseLine purchaseLine = purchaseLineService.getPurchaseLineById(1);
+	    	purchaseLine.setId(1);
 	    	purchaseLineService.deletePurchaseLine(1);
+	    	assertEquals(1, purchaseLine.getId());
 	  	};
 		
 

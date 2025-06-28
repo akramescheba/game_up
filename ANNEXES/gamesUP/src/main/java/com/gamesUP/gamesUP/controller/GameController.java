@@ -1,14 +1,22 @@
 package com.gamesUP.gamesUP.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Game;
 import com.gamesUP.gamesUP.services.GameService;
+
+import dto.GameDTO;
+import jakarta.transaction.Transactional;
+import vues.JsonGameView;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+
+
 @CrossOrigin(origins={"http://localhost:4200"},  allowedHeaders = "*")
 
 public class GameController {
@@ -18,25 +26,34 @@ public class GameController {
   
   //AJOUT DU VERBE GET - POUR AFFICHER LES TOUS JEUX
   @GetMapping("/jeux")
+
   @ResponseStatus(code = HttpStatus.OK)
+
   public List<Game> getAllGame() {
     return gameService.findALL();
   }
   //AJOUT DU VERBE GET  - POUR AFFICHER UN JEU PAR ID
   @GetMapping("/jeu/{id}")
+
   @ResponseStatus(code = HttpStatus.OK)
+ 
   public Game getGameById(@PathVariable("id") Long id) {
     Game game = gameService.findById(id);
 
-    if (game == null) {}
+    if (game == null) {
+        throw new ExceptionEntityDontExist();
+    }
+    game.getCategory();   
+    game.getPublisher();
+    game.getAuthor(); 
     return game;
   }
 
   //AJOUT DU VERBE POST  - AJOUTER UN JEU
   @PostMapping("/jeu")
   @ResponseStatus(code = HttpStatus.CREATED)
-  public Long createGame(@RequestBody Game game) {
-    return gameService.ajouterJeu(game);
+  public Game createGame(@RequestBody GameDTO gameDTO) {
+    return gameService.ajouterJeu(gameDTO);
   }
 
   //AJOUT DU VERBE PUT  - MODIFIER UN JEU PAR ID
@@ -49,16 +66,11 @@ public class GameController {
     gameService.update(id, games);
   }
 
-  //AJOUT DU VERBE PUT  - MODIFIER UN CHAMP PRECIS DU JEU PAR ID
+  /*AJOUT DU VERBE PUT  - MODIFIER UN CHAMP PRECIS DU JEU PAR ID*/
   @PatchMapping("/jeu/{id}")
   @ResponseStatus(code = HttpStatus.OK)
-  public void updatePartialGame(@PathVariable Long id, @RequestBody Game newGame) {
-    Game gameExistant = gameService.findById(id);
-
-    if (gameExistant == null) {
-      throw new ExceptionEntityDontExist();
-    }
-    gameService.updatePartial(gameExistant, newGame);
+  public void updatePartialGame(@PathVariable Long id, @RequestBody GameDTO gameDTO) {
+      gameService.updatePartial(id, gameDTO);
   }
   
   //AJOUT DU VERBE DELETE  - SUPPRIMER UN JEU

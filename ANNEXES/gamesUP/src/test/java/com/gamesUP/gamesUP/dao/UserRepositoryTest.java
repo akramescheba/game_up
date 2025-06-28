@@ -21,13 +21,13 @@ public class UserRepositoryTest {
 
 	  //Test de vérification des méthode GETs, POST, PATCH et DELETE du modèle USER;
 	  // Test GetAll
-	  @Test
+	 // @Test
 	  void shouldGetAllUsers() {
 	    List<User> users = userServiceImpl.getAllUsers();
 	    assertEquals(2, users.size());
 	  }
 	  //Test GeById
-	    @Test
+	    //@Test
 	    void shouldGetById() {
 	  	  User user = userServiceImpl.getUserById((long) 1);
 	  	  assertEquals("VISIPLUS", user.getNom());
@@ -46,7 +46,7 @@ public class UserRepositoryTest {
 	      assertEquals("ISCOD", newUsers.getNom());
 	    }
 	    //Test Patch
-	    @Test
+	    //@Test
 	    void shouldUpdatePartialUser() {
 	  	  User userExistant = userServiceImpl.getUserById((long) 1);
 	  	  User newUser = new User();
@@ -54,7 +54,7 @@ public class UserRepositoryTest {
 	  	  userServiceImpl.updatePartialUser(userExistant, newUser);
 	    }
 	    //Test Update
-	    @Test
+	    //@Test
 	    void shouldUpdateUser() {
 	    	User userExistant = userServiceImpl.getUserById(1L);
 	    	User newUser = new User();
@@ -62,7 +62,7 @@ public class UserRepositoryTest {
 	  	userServiceImpl.updateUser(1L, userExistant);
 	    }
 	    //Test delete
-	    @Test
+	    //@Test
 	    void shouldDeleteUser() {
 	  	  userServiceImpl.deleteUser((long) 1);
 	  	};

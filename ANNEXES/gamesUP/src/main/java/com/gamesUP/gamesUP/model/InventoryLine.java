@@ -1,30 +1,31 @@
 package com.gamesUP.gamesUP.model;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "inventory_line")
 public class InventoryLine {
 	
 	 @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
+	    private int quantity;
 
 	    @ManyToOne
-	    @JoinColumn(name = "inventory_id")
+	    @JoinColumn(name = "inventory_id", nullable = false)
 	    private Inventory inventory;
 
 	    @ManyToOne
-	    @JoinColumn(name = "game_id")
+	    @JoinColumn(name = "game_id", nullable = false)
 	    private Game game;
 
-	    private int quantity;
+
 
 		public Long getId() {
 			return id;

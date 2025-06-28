@@ -1,24 +1,33 @@
 package com.gamesUP.gamesUP.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "utilisateur")
+@Table(name = "utilisateur") 
 public class User {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@JsonIgnoreProperties("user")
 	private Long id;
     private String nom;
 	private String email;
     private String role;
 	private String password;
     private String repassword;
-	 //Ajout des getters et setters
+    
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Wishlist wishlist;
+    
+	 /*AJOUT DES GETTERS ET SETTERS*/
 	public Long getId() {
 		return id;
 	}
@@ -55,4 +64,11 @@ public class User {
 		public void setRepassword(String repassword) {
 			this.repassword = repassword;
 		}
+		public Wishlist getWishlist() {
+			return wishlist;
+		}
+		public void setWishlist(Wishlist wishlist) {
+			this.wishlist = wishlist;
+		}
+		
 }

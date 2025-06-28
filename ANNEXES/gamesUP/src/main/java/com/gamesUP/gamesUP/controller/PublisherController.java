@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Publisher;
 import com.gamesUP.gamesUP.services.PublisherService;
+
+import vues.JsonPublisherView;
 
 @RestController
 @CrossOrigin(origins={"http://localhost:4200"},  allowedHeaders = "*")

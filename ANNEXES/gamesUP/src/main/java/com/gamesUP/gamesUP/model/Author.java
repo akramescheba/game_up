@@ -1,7 +1,11 @@
 package com.gamesUP.gamesUP.model;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -9,18 +13,23 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
-//Ajoute du décorateur Entity
+
+/*LES VUES AUTORISEES*/
 @Entity
 @Table(name = "author")
 public class Author {
-	//Ajoute du décorateur ID et Generatedvalue
+	/*LES VUES AUTORISEES*/
 	@Id
-	  @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	 
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("author")
+    private List<Game> games ;
     
-    @OneToMany(mappedBy = "author")
-    private List<Game> games;
+    public Author() {};
     
     public Long getId() {
 		return id;

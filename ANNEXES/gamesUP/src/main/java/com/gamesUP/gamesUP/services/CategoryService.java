@@ -1,8 +1,8 @@
 package com.gamesUP.gamesUP.services;
 
 import java.util.List;
-
 import com.gamesUP.gamesUP.model.Category;
+
 
 public interface CategoryService {
 	public List<Category> findAllCategories();

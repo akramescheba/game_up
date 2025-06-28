@@ -17,16 +17,25 @@ public class PurchaseLine {
 	private int utilisateurId;
     private int jeuId;
     private double prix;
+    private double rating;
     
     @ManyToOne
+
     private Game game;
 
     @ManyToOne
     @JoinColumn(name = "purchase_id")
     private Purchase purchase;
 
-    
-	 //Ajout des getters et setters
+
+	//Ajout des getters et setters
+	 public double getRating() {
+		return rating;
+	}
+
+	public void setRating(double rating) {
+		this.rating = rating;
+	}
     public int getId() {
 		return id;
 	}

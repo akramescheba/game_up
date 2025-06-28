@@ -38,7 +38,7 @@ public class AuthorServiceImpl implements AuthorService{
 		   Author authorExistant = authorRepository.findById(id)
 			        .orElseThrow(() -> new ExceptionEntityDontExist());
 		   authorExistant.setName(author.getName());
-		   authorExistant.setGames(author.getGames());
+		  authorExistant.setGames(author.getGames());
 		   authorRepository.save(authorExistant);
 		
 	}
@@ -53,6 +53,14 @@ public class AuthorServiceImpl implements AuthorService{
 	public void deleteAuthor(Long id) {
 		authorRepository.deleteById(id);
 		
+	}
+
+	@Override
+	public void updatePartialAuthor(Author authorExistant, Author newAuthor) {
+		 if (newAuthor.getName() != null) {
+			 authorExistant.setName(newAuthor.getName());
+		    }
+		 authorRepository.save(authorExistant);
 	}
 
 }

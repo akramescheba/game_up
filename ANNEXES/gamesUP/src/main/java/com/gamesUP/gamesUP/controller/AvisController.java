@@ -1,5 +1,6 @@
 package com.gamesUP.gamesUP.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,7 @@ public class AvisController {
 	  @PostMapping("/avis")
 	  @ResponseStatus(code = HttpStatus.CREATED)
 	  public int createAvis(@RequestBody Avis avis) {
+		  avis.setDate(LocalDateTime.now());
 	    return avisService.createAvis(avis);
 	  }
 	  

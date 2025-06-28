@@ -1,7 +1,8 @@
 package com.gamesUP.gamesUP.dao;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.LocalDateTime;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -26,15 +27,18 @@ public class AvisRepositoryTest {
 	  @Test
 	  void shouldGetAvisById() {
 		  Avis avis = avisRepositoryImpl.getAvisById(1);
-		  assertEquals(10, avis.getNote());
+		  assertEquals(5, avis.getNote());
 	  }
 	    //Test Post
 	    @Test
 	    void shouldCreateAvis() {
 	      Avis newAvis = new Avis();
-	      newAvis.setNote(10);
+	      newAvis.setNote(5);
+	      newAvis.setDate(LocalDateTime.of(2025, 6, 26, 20, 45));
 	      newAvis.setCommentaire("Merveilleux");
-	      assertEquals(10, newAvis.getNote());
+	      assertEquals(5, newAvis.getNote());
+	      assertEquals("Merveilleux", newAvis.getCommentaire());
+	      assertEquals(LocalDateTime.of(2025, 6, 26, 20, 45), newAvis.getDate());
 	    }
 	    //Test Update
 	    @Test

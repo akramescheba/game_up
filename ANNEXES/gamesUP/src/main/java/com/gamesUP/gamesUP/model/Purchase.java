@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -24,7 +26,17 @@ public class Purchase {
 
     @OneToMany(mappedBy = "purchase")
     private List<PurchaseLine> line;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
+    //Ajout des getters et setters
+    public User getUser() {
+    	return user;
+    }
+    public void setUser(User user) {
+    	this.user = user;
+    }
     // Getters et setters
     public Long getId() {
         return id;
