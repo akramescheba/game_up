@@ -92,7 +92,6 @@ public class GameRepositoryTest {
 	   // @Test
 	    void shouldDeleteGame() {
 	    	gameServiceImpl.delete((long) 1);
-	    	
-	  	};
+	    		  	};
 	
 }

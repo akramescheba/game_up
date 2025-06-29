@@ -1,8 +1,9 @@
 package com.gamesUP.gamesUP.dao;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -12,19 +13,18 @@ import com.gamesUP.gamesUP.services.impl.RecommendationServiceImpl;
 
 import dto.RecommendationDTO;
 
+
 @DataJpaTest
 @ActiveProfiles("test")
 
-public class RecommendationRespositoryTest {
+
+public class RecommendationPurchaseRepositoryTest {
 	@Autowired
 	private RecommendationServiceImpl recommendationServiceImpl;
-
-    public RecommendationRespositoryTest() {
-    }
-	
-@Test
-	void shouldHaveGetAllRecommendationResponse(){
-		List<RecommendationDTO> recommendationResponse = recommendationServiceImpl.getAllRecommendation(1L);
-		assertEquals(2, recommendationResponse.size());
+	@Test
+	void shouldIRecommendatePurchase() {
+		
+		List<RecommendationDTO> recommendationPurchase =recommendationServiceImpl.getAllRecommendation(1L);		
+		assertEquals(2, recommendationPurchase.size());
 	};
 }

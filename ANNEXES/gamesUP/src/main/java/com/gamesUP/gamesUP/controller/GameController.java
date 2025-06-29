@@ -1,13 +1,11 @@
 package com.gamesUP.gamesUP.controller;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Game;
 import com.gamesUP.gamesUP.services.GameService;
 
 import dto.GameDTO;
-import jakarta.transaction.Transactional;
-import vues.JsonGameView;
+
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -16,6 +16,8 @@ public interface WishlistService {
 
 	public void deleteWishlist(Long id);
 
+	public void updatePartialWishlist(Wishlist wishlistExistant, Wishlist neWishlist);
+
 
 
 }

@@ -43,6 +43,13 @@ public class AuthorRepositoryTest {
 	    	newAuthor.setName("auteur");
 	    	authorServiceImpl.updateAuthor(1L, userAuthor);
 	    }
+	    @Test
+	    void shouldUpdatePartialAuthor() {
+	    	Author userAuthorExisting = authorServiceImpl.getAuthorById(1L);
+	    	Author newAuthor = new Author();
+	    	newAuthor.setName("auteur");
+	    	authorServiceImpl.updatePartialAuthor(userAuthorExisting, newAuthor);
+	    }
 	    //Test delete
 	    @Test
 	    void shouldDeleteAuthor() {

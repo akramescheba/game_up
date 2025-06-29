@@ -3,7 +3,7 @@ package com.gamesUP.gamesUP.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonView;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import vues.JsonPublisherView;
+
 
 @Entity
 
@@ -32,7 +32,7 @@ public class Publisher {
 	//Ajout des getters et setters
 
 	public Long getId() {
-		return id;
+	 	return id;
 	}
 	public void setId(Long id) {
 		this.id = id;

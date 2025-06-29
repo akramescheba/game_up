@@ -18,7 +18,7 @@ public class WishlistRepositoryTest {
 	@Autowired
 	private WishlistServiceImpl wishlistServiceImpl;
 
-    //@Test
+    @Test
 	void shouldGetAllCategories() {
 		List<Wishlist> wishlists = wishlistServiceImpl.getAllWishLists();
 		assertEquals(1, wishlists.size());
@@ -40,17 +40,26 @@ public class WishlistRepositoryTest {
 		assertEquals("wishlist", newWishlist.getName());
 	}
 
+	// Test UpdatePartial
+		 @Test
+		void shouldUpdatePartialWishlist() {
+			Wishlist wishlistExistant = wishlistServiceImpl.getWishListById(1L);
+			Wishlist newWishlist = new Wishlist();
+			newWishlist.setName("wishlist");
+			wishlistServiceImpl.updatePartialWishlist( wishlistExistant, newWishlist);
+		}
+		
 	// Test Update
-	// @Test
+	@Test
 	void shouldUpdateWishlist() {
-		Wishlist wishlist = wishlistServiceImpl.getWishListById(1L);
+		Wishlist wishlistExistant = wishlistServiceImpl.getWishListById(1L);
 		Wishlist newWishlist = new Wishlist();
 		newWishlist.setName("wishlist");
-		wishlistServiceImpl.updateWishlist(1L, wishlist);
+		wishlistServiceImpl.updateWishlist(1L, wishlistExistant);
 	}
 
 	// Test delete
-	// @Test
+	@Test
 	void shouldDeleteWishlist() {
 		wishlistServiceImpl.deleteWishlist((long) 1);
 	};

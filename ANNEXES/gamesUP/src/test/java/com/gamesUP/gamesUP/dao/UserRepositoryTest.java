@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import com.gamesUP.gamesUP.model.User;
+import com.gamesUP.gamesUP.services.UserService;
 import com.gamesUP.gamesUP.services.impl.UserServiceImpl;
 
 
@@ -23,7 +24,7 @@ public class UserRepositoryTest {
 	  // Test GetAll
 	 // @Test
 	  void shouldGetAllUsers() {
-	    List<User> users = userServiceImpl.getAllUsers();
+	     List<User> users = userServiceImpl.getAllUsers();
 	    assertEquals(2, users.size());
 	  }
 	  //Test GeById
@@ -44,27 +45,32 @@ public class UserRepositoryTest {
 	      newUsers.setRepassword("iscod2025");
 	      //userServiceImpl.createUser(newUsers); 
 	      assertEquals("ISCOD", newUsers.getNom());
+	      assertEquals("iscod@email.com", newUsers.getEmail());
+	      assertEquals("iscod2025", newUsers.getPassword());
 	    }
 	    //Test Patch
-	    //@Test
+	    @Test
 	    void shouldUpdatePartialUser() {
-	  	  User userExistant = userServiceImpl.getUserById((long) 1);
+	  	 User userExistant = userServiceImpl.getUserById((long) 1);
 	  	  User newUser = new User();
 	  	  newUser.setNom("AKREA");
 	  	  userServiceImpl.updatePartialUser(userExistant, newUser);
+	  
 	    }
 	    //Test Update
-	    //@Test
+	    @Test
 	    void shouldUpdateUser() {
 	    	User userExistant = userServiceImpl.getUserById(1L);
 	    	User newUser = new User();
 	    	newUser.setNom("AKREA");
 	  	userServiceImpl.updateUser(1L, userExistant);
+	  	
 	    }
 	    //Test delete
-	    //@Test
+	    @Test
 	    void shouldDeleteUser() {
-	  	  userServiceImpl.deleteUser((long) 1);
+	    
+	  	  userServiceImpl.deleteUser(1L);
 	  	};
 		
 	}

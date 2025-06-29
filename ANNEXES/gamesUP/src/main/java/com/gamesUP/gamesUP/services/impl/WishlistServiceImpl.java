@@ -53,6 +53,14 @@ public class WishlistServiceImpl implements WishlistService{
 		wishlistRepository.deleteById(id);
 		}
 
+	@Override
+	public void updatePartialWishlist(Wishlist wishlistExistant, Wishlist neWishlist) {
+		if (neWishlist.getName() != null) {
+			wishlistExistant.setName(neWishlist.getName());
+		}wishlistRepository.save(wishlistExistant);
+		
+	}
+
 	}
 
 

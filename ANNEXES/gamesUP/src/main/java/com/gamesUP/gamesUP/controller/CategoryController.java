@@ -16,13 +16,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Category;
 import com.gamesUP.gamesUP.services.CategoryService;
 
-import vues.JsonCategoryView;
-import vues.JsonGameView;
 
 
 @RestController
@@ -35,7 +32,7 @@ public class CategoryController {
 	@GetMapping("/categories")
 
 	public List<Category> getAllCategories() {
-		return categoryService.findAllCategories();	
+	return categoryService.findAllCategories();	
 	};
 	
 	@GetMapping("/category/{id}")

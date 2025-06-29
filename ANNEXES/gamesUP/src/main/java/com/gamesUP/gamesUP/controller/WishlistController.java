@@ -1,6 +1,7 @@
 package com.gamesUP.gamesUP.controller;
 
 import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
+import com.gamesUP.gamesUP.model.User;
 import com.gamesUP.gamesUP.model.Wishlist;
 import com.gamesUP.gamesUP.services.WishlistService;
 import java.util.List;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -59,7 +61,18 @@ public class WishlistController {
     }
     wishlistService.updateWishlist(id, wishlists);
   }
+  @PatchMapping("/wishlist/{id}")
+  @ResponseStatus(code = HttpStatus.OK)
+  public void updatePartialWishlist(@PathVariable Long id, @RequestBody Wishlist neWishlist) {
+	  Wishlist wishlistExistant = wishlistService.getWishListById(id);
 
+	    if (wishlistExistant == null) {
+	      throw new ExceptionEntityDontExist();
+	    }
+	    wishlistService.updatePartialWishlist(wishlistExistant, neWishlist);
+	  }
+
+  
   //AJOUT DU VERBE DELETE  - SUPPRIMER UNE LISTE DES SOUHAITS
   @DeleteMapping("/wishlist/{id}")
   @ResponseStatus(code = HttpStatus.OK)

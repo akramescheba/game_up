@@ -5,7 +5,7 @@ public class RecommendationDTO {
 	    private Double rating;
 	    
 		public Integer getGame_id() {
-			return game_id;
+			 return game_id;
 		}
 		public void setGame_id(Integer game_id) {
 			this.game_id = game_id;
