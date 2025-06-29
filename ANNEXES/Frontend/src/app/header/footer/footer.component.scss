@@ -1,33 +1,12 @@
-.content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  // background-color:  rgb(0, 0, 98);
-  background: rgb(40, 40, 40);
-  
+
+
+
+.conatainer{
+padding:0 300px;
+  background:  rgba(14, 13, 13, 0.479);
 }
 
-.btn-avis{
-  bottom: 350px;
-  right: 50px;
-  position: fixed;
-  z-index: 9999;
-  padding: 10px 30px;
-  border: none;
-  border-radius:5px;
-  gap:20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(255, 0, 0, 0.041);
-
-}
-
-svg{
-  width: 35px;
-}
-
-/*Style des avis From Uiverse.io by anniekoop*/
+/*STYLE D'AFFICHAGES DES AVIS*/
 .affichage {
   display: flex;
   flex-wrap: wrap;
@@ -36,22 +15,19 @@ svg{
   width: max-content;
   gap: 30px;
   padding: 20px;
-
-
 }
 .card {
   width: fit-content;
   border-radius: 5px;
   transition: ease 0.2s;
-  border: 1px solid rgb(59, 59, 59);
+  border: 1px solid rgba(59, 59, 59, 0.103);
 }
 // .card:hover {
 //   background-color: #d3ddf1;
 //   border: 1.5px solid #1677ff;
 // }
 
-/*Style des cartes d'affichage des commentaires*/
-.container {
+.container-card {
   width: 230px;
   margin-top: 1.25em;
   margin-bottom: 1.25em;
@@ -90,176 +66,4 @@ svg{
   font-weight: 400;
   color: #666;
   width: 230px;
-}
-
-/*Style de la modal*/
-.modal{
-  background-color: rgba(0, 0, 0, 0.493);
-  overflow: hidden;
-}
-.modal-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  min-height: 350px;
-}
-input.note {
-  padding: 10px;
-  font-size: 12px;
-  text-align: center;
-  border: 1px solid #ccc;
-  overflow: hidden;
-  outline: none;
-}
-.container-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 10px;
-}
-.erreur {
-  color: red;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 12px;
-  margin: 0 auto;
-}
-textarea {
-  width: 390px;
-  resize: none;
-  height: 120px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-size: 16px;
-  text-align: center;
-  color: #555;
-  outline: none;
-  overflow: hidden;
-}
-.card.modal-dialog {
-  width: 400px;
-  height: auto;
-  border-radius: 2px;
-  box-shadow:
-    0 1px 4px rgba(0, 0, 0, 0.1),
-    0 2px 3px rgba(0, 0, 0, 0.064);
-  margin: 20px;
-  padding: 0 10px;
-}
-
-.card-title-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
-.card-title {
-  text-align: center;
-  width: 100%;
-  font-size: 1em;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #5d5d5da3;
-  padding: 10px;
-}
-
-.card-text {
-  font-size: 0.8em;
-  color: #757575;
-  padding: 10px 0 10px 10px;
-}
-
-.btn-cancel {
-  font-size: 0.7em;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin: 5px 10px 20px;
-  border-radius: 5px;
-  color: #e3f;
-  border: 1px solid #e3f2fd;
-  background-color: #e3f2;
-  box-shadow: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.4s ease-in-out;
-}
-.btn-accept {
-  font-size: 0.7em;
-  font-weight: 600;
-  padding: 5px 10px;
-  margin: 5px 10px 20px;
-  border-radius: 5px;
-  color: #2196f3;
-  border: 1px solid #e3f2fd;
-  background-color: #e3f2fd;
-  box-shadow: none;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: 0.4s ease-in-out;
-}
-
-.btn-accept:hover,
-.btn-accept:active,
-.btn-accept:focus {
-  color: #2196f3;
-  background-color: #e3f2fd;
-  border: 1px solid #2196f3;
-}
-.btn-cancel:hover,
-.btn-cancel:active,
-.btn-cancel:focus {
-  color: rgb(253, 53, 53);
-  background-color: #e3f2;
-  border: 1px solid rgb(253, 53, 53);
-}
-input:hover,
-input:focus,
-input:active,
-textarea:hover,
-textarea:active,
-textarea:focus {
-  color: rgb(108, 102, 102);
-  background-color: rgb(255, 255, 255);
-  border: 1px solidrgb(253, 53, 53);
-}
-
-/* From Uiverse.io by vinodjangid07 */
-.rating-card {
-  width: max-content;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 10px;
-  border-radius: 5px;
-  font-family: Arial, Helvetica, sans-serif;
-  border: 1px solid rgba(87, 86, 86, 0.175);
-}
-.text-wrapper {
-  width: 100%;
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
-}
-.text-primary {
-  color: white;
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-.text-secondary {
-  color: #cccccc;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
 }

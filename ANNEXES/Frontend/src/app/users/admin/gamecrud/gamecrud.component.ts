@@ -58,7 +58,7 @@ export class GamecrudComponent implements OnInit {
       description: ['', Validators.required],
       categoryId: [null, Validators.required],
     });
-    this.authorService.getAuthor().subscribe((author) => {
+    this.authorService.getAllAuthors().subscribe((author) => {
       this.listAuthor = author;
       console.log(author);
     });
@@ -114,7 +114,7 @@ export class GamecrudComponent implements OnInit {
     const gameNom = this.gameForm.value.nom;
     this.appService.postGame(this.gameForm.value).subscribe(() => {
       this.toastr.success('Jeu créé avec succès', `${gameNom}`);
-      console.log(this.gameForm.value);
+        this.appService.reload();
     });
   }
   /*FONCTION PATCH POUR LA MISE A JOUR  DE JEU */
@@ -137,7 +137,7 @@ export class GamecrudComponent implements OnInit {
     };
     this.appService.updatePartialGame(gameId, patchData).subscribe((data) => {
       this.toastr.success(`Mise à jour du reussite`, `${gameNom} `);
-      this.getGameList();
+      this.appService.reload();
     });
   }
 
@@ -147,7 +147,7 @@ export class GamecrudComponent implements OnInit {
       const gameId = this.selectedGame.id;
       this.appService.deleteGame(gameId).subscribe((data) => {
         this.toastr.success('Le jeu a été supprimé avec succès');
-        location.reload();
+        this.appService.reload();
       });
     }
   }

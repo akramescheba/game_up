@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { AuthorService } from '../../services/author.service';
+import { AppService } from '../../services/app.service';
 import { ToastrService } from 'ngx-toastr';
 import { Author, GameList } from '../../models/models';
 
@@ -22,13 +23,12 @@ export class AuthorComponent implements OnInit {
   ListAuthor: Author[] = [];
   authorForm: FormGroup = new FormGroup({});
   selectedAuthor: Author | null = null;
-  selectedGame: GameList|null=null;
-
+  selectedGame: GameList | null = null;
   isDisplayWarning: boolean = false;
   isDisplayEditCard: boolean = false;
   isDisplayAuthorDetails: boolean = false;
-   isDisplayEdit: boolean=false;
-  isDisplayDetailCard: boolean=false;
+  isDisplayEdit: boolean = false;
+  isDisplayDetailCard: boolean = false;
 
   displayWarningForm(author: Author) {
     this.isDisplayWarning = true;
@@ -43,7 +43,8 @@ export class AuthorComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authorService: AuthorService,
-    private toastr:ToastrService
+    private appService: AppService,
+    private toastr: ToastrService
   ) {}
 
   /*METHODE D'ACCES PAR SELECTION D'UN AUTHOR VIA SON ID*/
@@ -55,45 +56,45 @@ export class AuthorComponent implements OnInit {
     this.isDisplayDetailCard = true;
   }
   ngOnInit() {
-    this.getAuthor();
+    this.getAllAuthors();
     this.authorForm = this.formBuilder.group({
       name: ['', Validators.required],
     });
   }
   /*METHODE DE GET D'UN AUTHOR */
-  getAuthor() {
-    this.authorService.getAuthor().subscribe((data) => {
+  getAllAuthors() {
+    this.authorService.getAllAuthors().subscribe((data) => {
       this.ListAuthor = data;
     });
   }
 
   /*METHODE POST DE CREATION D'UN AUTHOR */
   postAuthor() {
-      if (this.authorForm.invalid) {
-      this.toastr.warning('🫤Veuillez remplir tous les champs correctement');
+    if (this.authorForm.invalid) {
+      this.toastr.warning('Veuillez remplir tous les champs correctement');
       return;
     }
     this.authorService.postAuthor(this.authorForm.value).subscribe((data) => {
+      this.toastr.success('Auteur créé avec succès');
     });
+    this.appService.reload();
   }
   /*METHODE PATCH DE MISE A JOUR D'UN AUTHOR */
   updateAuthor(): void {
-     if (this.authorForm.invalid) {
-      this.toastr.warning('🫤Veuillez remplir tous les champs correctement');
-      return;
-    }
-
     if (this.selectedAuthor) {
       const authorId = this.selectedAuthor.id;
       const data = { ...this.selectedAuthor };
       this.authorService.updateAuthor(authorId, data).subscribe((author) => {
-
+        this.toastr.success('Auteur modifié avec succès');
+        this.appService.reload();
       });
     }
   }
   /*METHODE DELETE DE SUPPRESSION D'UN AUTHOR */
   deleteAuthorById(id: number) {
-    this.authorService.deleteAuthorById(1).subscribe((data) => {
+    this.authorService.deleteAuthorById(id).subscribe((data) => {
+      this.toastr.success('Auteur supprimé avec succès');
+      this.appService.reload();
     });
   }
 }

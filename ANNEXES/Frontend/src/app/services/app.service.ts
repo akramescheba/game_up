@@ -17,6 +17,11 @@ export class AppService {
 
   constructor(private http: HttpClient) {}
   /*Méthode d'affichage, de création, de mise àjourt et de suppression des jeux dépuis la base des données */ 
+ reload(){
+      setTimeout(function () { location.reload(); }, 500);
+ }
+
+
   getAllGame(): Observable<any[]> {
     return this.http.get<any[]>(this.urlApiAllGame);
   }

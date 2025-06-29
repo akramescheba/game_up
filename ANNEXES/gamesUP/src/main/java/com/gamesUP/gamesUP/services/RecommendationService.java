@@ -2,10 +2,10 @@ package com.gamesUP.gamesUP.services;
 
 import java.util.List;
 
-import com.gamesUP.gamesUP.model.RecommendationResponse;
+import dto.RecommendationDTO;
 
 public interface RecommendationService {
 
-	List<RecommendationResponse> getAllRecommendation(Long userId);
+	List<RecommendationDTO> getAllRecommendation(Long userId);
 
 }

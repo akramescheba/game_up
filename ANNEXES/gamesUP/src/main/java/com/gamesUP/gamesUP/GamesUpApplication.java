@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class GamesUpApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GamesUpApplication.class, args);
+	SpringApplication.run(GamesUpApplication.class, args);
 	}
 
 }

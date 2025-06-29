@@ -1,5 +1,6 @@
 package com.gamesUP.gamesUP.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,7 +14,7 @@ import jakarta.persistence.Table;
 
 public class Game {
 @Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+@GeneratedValue(strategy = GenerationType.AUTO)
 
 private Long id;
 private String nom;
@@ -37,7 +38,7 @@ private Author author;
 @ManyToOne
 @JsonIgnoreProperties("games")
 private Wishlist wishlist;
-public Game(){};
+
 
 /*AJOUT DES GETTERS ET SETTERS*/
 public Author getAuthor() {

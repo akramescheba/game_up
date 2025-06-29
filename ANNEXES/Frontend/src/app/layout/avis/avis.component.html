@@ -1,35 +1,14 @@
 <div>
-  <!-- MODAL -->
-  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <form class="modal-dialog modal-dialog-centered" [formGroup]="avisForms" (ngSubmit)="postAvis()">
-      <div class="rating-card modal-content ">
-        <div class="modal-header">
-          <h5 class="card-title" id="staticBackdropLabel">Ajouter votre avis</h5>
-        </div>
-        <div class="modal-body">
-
-          <input class="note" type="number" formControlName="note" min="1" max="10" placeholder="Note ">
-          <div class="erreur" *ngIf="avisForms.get('note')?.invalid && avisForms.get('note')?.touched">
-            La note doit être comprise entre 1 et 10.
-          </div>
-          <textarea min="20" max="150" class="card-text form-control mb-3" formControlName="commentaire"
-            placeholder="Partagez votre expérience concernant ce jeu">
-        </textarea>
-          <div class="erreur" *ngIf="avisForms.get('commentaire')?.invalid && avisForms.get('commentaire')?.touched">
-            Votre commentaire doit comporter entre 10 et 150 caractères.
-          </div>
-        </div>
-        <div class="modal-footer container-btn">
-          <button type="submit" class="btn btn-accept" >Publier</button>
-          <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Annuler</button>
-        </div>
-      </div>
-    </form>
-  </div>
-<!-- AFFICHAGE DES AVIS -->
+  <!-- AFFICHAGE DES AVIS -->
   <div class="affichage">
     <div class="card" *ngFor="let avis of listAvis">
+      <!-- SUPPRESSION D'UN AVIS -->
+      <div class="trash" (click)="deleteAvisById(avis.id)">
+        <svg width="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <path fill="#ff0000"
+            d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
+        </svg>
+      </div>
       <div class="container">
         <div class="left">
           <div class="status-ind">
@@ -46,7 +25,7 @@
               <br>
               Note : <a> {{avis.note}}</a>
             </p>
-            <p class="time">2 hours ago</p>
+            <p class="time">Publié le :{{avis.date}}</p>
           </div>
           <div class="button-wrap">
 
@@ -54,14 +33,7 @@
           </div>
         </div>
       </div>
-      <!-- SUPPRESSION D'UN AVIS -->
-      <div class="trash" (click)="deleteAvisById(avis.id)" onclick="location.reload()">
-        <svg  width="30px" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 448 512">
-          <path fill="#ff0000"
-            d="M135.2 17.7C140.6 6.8 151.7 0 163.8 0L284.2 0c12.1 0 23.2 6.8 28.6 17.7L320 32l96 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 96C14.3 96 0 81.7 0 64S14.3 32 32 32l96 0 7.2-14.3zM32 128l384 0 0 320c0 35.3-28.7 64-64 64L96 512c-35.3 0-64-28.7-64-64l0-320zm96 64c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16zm96 0c-8.8 0-16 7.2-16 16l0 224c0 8.8 7.2 16 16 16s16-7.2 16-16l0-224c0-8.8-7.2-16-16-16z" />
-        </svg>
-      </div>
+
     </div>
 
   </div>

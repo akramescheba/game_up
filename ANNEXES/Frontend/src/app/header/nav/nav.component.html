@@ -1,16 +1,19 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" (click)="pageActive = 'games'">
   <div class="container-fluid">
     <a>
-      <div class="icon">
-        <img src={{logo}} alt="Logo" class="Logo">
-      </div>
+      <a class="icon" href="/">
+        <img src={{logo}} alt="Logo" class="Logo" >
+      </a>
     </a>
-    <a class="liste-souhaits" (click)="onWishlist()">
-      wishlist
+    <a class="liste-souhaits" (click)="onAuteur()">
+      author
     </a>
     <a class="liste-category" (click)="onCategory()">
       Catégories
     </a>
+    <!-- <a class="liste-souhaits">
+      wishlist
+    </a> -->
     <button class="Btn" (click)="logout()">
       <div class="text"> Déconnexion</div>
     </button>

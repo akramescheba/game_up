@@ -46,3 +46,8 @@ export interface WishList{
   name: string;
   games: GameList[];
 }
+export interface Recommendations{
+  game_id: number;
+  game_name: string;
+  rating: number;
+}

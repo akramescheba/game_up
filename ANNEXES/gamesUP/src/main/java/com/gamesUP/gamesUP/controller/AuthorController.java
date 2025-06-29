@@ -19,6 +19,8 @@ import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
 import com.gamesUP.gamesUP.model.Author;
 import com.gamesUP.gamesUP.services.AuthorService;
 
+
+
 @RestController
 @CrossOrigin(origins = { "http://localhost:4200" }, allowedHeaders = "*")
 public class AuthorController {
@@ -46,7 +48,7 @@ public class AuthorController {
   @PostMapping("/author")
   @ResponseStatus(code = HttpStatus.CREATED)
   public Long createAuthor(@RequestBody Author author) {
-    return authorService.ajouterAuthor(author);
+     return authorService.ajouterAuthor(author);
   }
 
   //AJOUT DU VERBE PATCH  - MODIFIER UN AUTHOR PAR ID

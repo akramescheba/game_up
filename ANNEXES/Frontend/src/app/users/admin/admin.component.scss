@@ -90,29 +90,30 @@ button {
 .user-nom {
   color: rgba(255, 255, 255, 0.815);
 }
-@media screen and (max-width: 768px) {
-  .dashboard-content {
-    display: flex;
-    flex-wrap: wrap;
-    height: max-content;
+// @media screen and (max-width: 1024px) {
+//   .dashboard-content {
+//     display: flex;
 
-  }
-  .colonne-gauche {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  position: relative;
-  height: max-content;
-  overflow: auto;
-  background-color: aliceblue;
-  }
-    .colonne-droite {
-   display: flex;
-  flex-direction: column-reverse;
-  align-items: center;
-  position: inherit;
-  height: max-content;
-  overflow: auto;
-  }
-}
+//     background-color: red;
+//   }
+// .colonne-gauche {
+// display: flex;
+// flex-wrap: wrap;
+// gap: 20px;
+//   align-items: center;
+//   width: max-content;
+
+//   color: #2c3e50;
+//   height: 100vh;
+//   overflow: auto;
+// }
+//     .colonne-droite {
+// display: flex;
+// flex-wrap: wrap;
+// gap: 20px;
+ 
+//   color: #2c3e50;
+//   overflow: auto;
+ 
+//   }
+// }

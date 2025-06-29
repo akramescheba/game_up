@@ -1,0 +1,33 @@
+<!-- MODAL -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <form class="modal-dialog modal-dialog-centered" [formGroup]="avisForm" (ngSubmit)="postAvis()">
+        <div class="rating-card modal-content ">
+            <div class="modal-header">
+                <h5 class="card-title" id="staticBackdropLabel">Ajouter votre avis</h5>
+            </div>
+            <div class="modal-body">
+
+                <!-- <input class="note" type="number" formControlName="note" min="1" max="10" placeholder="Note "> -->
+                <div class="card flex justify-center">
+                    <p-rating name="note" formControlName="note" />
+                </div>
+                <div class="erreur" *ngIf="avisForm.get('note')?.invalid && avisForm.get('note')?.touched">
+                    La note doit être comprise entre 1 et 5.
+                </div>
+                <textarea min="20" max="150" class="card-text form-control mb-3" formControlName="commentaire"
+                    placeholder="Partagez votre expérience concernant ce jeu">
+        </textarea>
+                <div class="erreur"
+                    *ngIf="avisForm.get('commentaire')?.invalid && avisForm.get('commentaire')?.touched">
+                    Votre commentaire doit comporter entre 10 et 150 caractères.
+                </div>
+            </div>
+            <div class="modal-footer container-btn">
+                <button type="submit" class="btn btn-accept">Publier</button>
+                <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Annuler</button>
+            </div>
+        </div>
+    </form>
+
+</div>

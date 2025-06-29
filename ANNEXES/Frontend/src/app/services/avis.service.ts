@@ -12,6 +12,7 @@ export class AvisService {
     return this.http.get<any[]>(this.urlAvis);
   }
   createAvis(avis: string ): Observable<any> {
+    const log = {avis, date: new Date()}
     return  this.http.post<any>(this.urlAvis, avis);
   }
   deleteAvisById(avisId: number): Observable<any>{

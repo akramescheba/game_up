@@ -20,7 +20,7 @@ import vues.JsonPublisherView;
 @Table(name = "publisher")
 public class Publisher {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
 	@OneToMany(mappedBy = "publisher")

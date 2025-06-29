@@ -113,7 +113,7 @@
                         <input type="text" name="type" formControlName="type" id="type"
                             placeholder="Saisir le type de la catégorie" required>
                     </div>
-                    <button class="form-submit-btn" type="submit" onclick="location.reload()" [disabled]="categoryForm.invalid">Créer</button>
+                    <button class="form-submit-btn" type="submit" [disabled]="categoryForm.invalid">Créer</button>
                 </form>
             </div>
         </div>
@@ -130,8 +130,8 @@
                         placeholder="Renseignez le type de catégorie" required>
                 </div>
                 <div class="container-btn">
-                    <button class="form-submit-btn" type="submit" onclick="location.reload()" [disabled]="categoryForm.invalid">Valider</button>
-                    <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
+                    <button class="form-submit-btn" type="submit"  >Valider</button>
+                    <button class="form-cancel-btn" type="button" onclick="location.reload()" >Annuler</button>
                 </div>
             </form>
         </div>
@@ -149,7 +149,7 @@
                     <p>Cette action est irréversible et supprimera tous les jeux de cette catégorie</p>
                 </div>
                 <div class="container-btn">
-                    <button class="form-cancel-btn" type="submit" onclick="location.reload()" >Confirmer</button>
+                    <button class="form-cancel-btn" type="submit" >Confirmer</button>
                     <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
                 </div>
             </form>

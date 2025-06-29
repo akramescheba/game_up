@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PublisherService } from '../../services/publisher.service';
+import {AppService} from '../../services/app.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Publisher, GameList } from '../../models/models';
@@ -15,6 +16,7 @@ import { Publisher, GameList } from '../../models/models';
 export class PublisherComponent implements OnInit {
   constructor(
     private publisherService: PublisherService,
+    private appService: AppService,
     private toastr: ToastrService ) {}
 
   listPublisher: Publisher[] = [];
@@ -53,5 +55,14 @@ export class PublisherComponent implements OnInit {
     this.publisherService.getAllPublishers().subscribe((publisher) => {
       this.listPublisher = publisher;
     });
+  }
+ deletePublisher():void{
+ if(this.selectedPublisher){
+  const publisherId = this.selectedPublisher.id;
+     this.publisherService.deletePublisher(publisherId).subscribe(()=>{
+      this.toastr.success('Publisher supprimé avec succès');
+      this.appService.reload();
+    })
+ }
   }
 }

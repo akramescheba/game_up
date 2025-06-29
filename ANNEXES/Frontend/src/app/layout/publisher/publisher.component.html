@@ -101,7 +101,7 @@
     <!-- WARNING DE SUPPRESSION DES CATEGORIES  -->
     <div class="delete-card">
         <div class="form-container-warning" *ngIf="isDisplayBtn">
-            <form class="form" *ngIf="selectedPublisher">
+            <form class="form" (ngSubmit)="deletePublisher()" *ngIf="selectedPublisher">
                 <div class="warning-titre">
                     <h1 class="modal-title">ATTENTION </h1><img src="/assets/waricon.png" alt="warning">
                 </div>
@@ -111,8 +111,8 @@
                     <p>Cette action est irréversible et supprimera tous les jeux liés à ce publicateur</p>
                 </div>
                 <div class="container-btn">
-                    <button class="form-cancel-btn" type="submit" onclick="location.reload()">Confirmer</button>
-                    <button class="form-cancel-btn" type="button" onclick="location.reload()">Annuler</button>
+                    <button class="form-cancel-btn" type="submit" >Confirmer</button>
+                    <button class="form-cancel-btn" type="button" onclick="location.reload()" >Annuler</button>
                 </div>
             </form>
         </div>

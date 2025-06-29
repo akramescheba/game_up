@@ -1,12 +1,22 @@
 <div class="home-page">
-       <!--BARRE DE RECHERCHE-->
+    <router-outlet/>
+
+    <!--BARRE DE RECHERCHE-->
     <div class="form">
         <input class="input" type="text" [(ngModel)]="searchWord" placeholder="Saisissez un mot" />
         <span class="input-border"></span>
     </div>
+    <!-- BOUTON REDIGER UN AVIS -->
+    <button class="btn-avis" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Rédiger un avis
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path fill="#0fd8e6"
+                d="M512 240c0 114.9-114.6 208-256 208c-37.1 0-72.3-6.4-104.1-17.9c-11.9 8.7-31.3 20.6-54.3 30.6C73.6 471.1 44.7 480 16 480c-6.5 0-12.3-3.9-14.8-9.9c-2.5-6-1.1-12.8 3.4-17.4c0 0 0 0 0 0s0 0 0 0s0 0 0 0c0 0 0 0 0 0l.3-.3c.3-.3 .7-.7 1.3-1.4c1.1-1.2 2.8-3.1 4.9-5.7c4.1-5 9.6-12.4 15.2-21.6c10-16.6 19.5-38.4 21.4-62.9C17.7 326.8 0 285.1 0 240C0 125.1 114.6 32 256 32s256 93.1 256 208z" />
+        </svg>
+    </button>
+    <app-avis class="modal-avis"></app-avis>
 
-  
-   <!--  AFFICHAGE DE LISTE DE JEU-->
+    <!--  AFFICHAGE DE LISTE DE JEU-->
     <div class="content" *ngIf="!isDisplayDetailCard">
         <div class="container noselect" *ngFor="let game of getFilteredGames()" (click)="selectGame(game)"
             [class.selected]="game.id === selectedGame?.id">
@@ -20,7 +30,6 @@
                 <div class="tracker tr-7"></div>
                 <div class="tracker tr-8"></div>
                 <div class="tracker tr-9"></div>
-
                 <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
                     <div class="card-content">
                         <div class="card-glare"></div>
@@ -29,25 +38,21 @@
                         </div>
                         <p id="prompt">{{ game.nom }}</p>
                         <div class="title">{{ game.nom }}</div>
-
                         <div class="glowing-elements">
                             <div class="glow-1"></div>
                             <div class="glow-2"></div>
                             <div class="glow-3"></div>
                         </div>
-
                         <div class="subtitle">
-                            <div class="genre">Auteur: {{ game.author }}</div>
+                            <div class="genre">Auteur: {{ game.author.name }}</div>
                             <div class="genre">Genre: {{ game.genre }}</div>
                             <span>ID: {{ game.id }}</span>
                             <span class="highlight">Édition: {{ game.numEdition }}</span>
                         </div>
-
                         <div class="card-particles">
                             <span></span><span></span><span></span>
                             <span></span><span></span><span></span>
                         </div>
-
                         <div class="corner-elements">
                             <span></span><span></span><span></span><span></span>
                         </div>
@@ -62,7 +67,7 @@
     <!-- AFFICHAGE DE DETAIL DES JEUX-->
     <div class="details">
         <div class="display" *ngIf="isDisplayDetailCard">
-    <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
+            <!--  BOUTON DE FERMETURE D'AFFICHAGE DES DETAIL D'UN JEU-->
             <button class="button" (click)="isDisplayDetailCard=false">
                 <span class="X"></span>
                 <span class="Y"></span>
@@ -74,7 +79,7 @@
                     <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
                     <div class="text">
                         <p class="text">Identifiant : {{ selectedGame?.id }}</p>
-                        <p class="text">Auteur : {{ selectedGame?.author }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
                         <p class="text">Genre : {{ selectedGame?.genre }}</p>
                         <p class="text">Description : {{ selectedGame?.description }}</p>
                         <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
@@ -104,4 +109,16 @@
             </div>
         </div>
     </div>
+     <ul class="recommandations" *ngIf="recommendationsList.length > 0">
+        <h2>Nos recommandations des jeux</h2>
+        <li class="jeu-recommandations" *ngFor="let game of recommendationsList" >
+            ID: {{ game.game_id }}
+        </li>
+
+        
+<div *ngIf="recommendationsList.length === 0">
+  <p>Aucune recommandation pour l'instant.</p>
+</div>
+
+    </ul>
 </div>

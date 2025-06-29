@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import  {GameList} from '../../models/models'; 
+import {AuthorService} from '../../services/author.service';
+import  {GameList, Author} from '../../models/models'; 
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,12 +15,17 @@ import { Router } from '@angular/router';
 })
 export class NavComponent {
   logo = 'assets/logo.png';
+    selectedAuthor: Author | null = null;
+  selectedGame: GameList | null = null;
 
-  constructor(private router: Router, private authService: AuthService) {}
+    ListAuthor: Author[] = [];
+
+
+  constructor(private router: Router, private authService: AuthService,    private authorService: AuthorService,) {}
 
   gameList: GameList[]=[];
   searchKeyWord: string = '';
-
+  pageActive: string = 'client';
   searchGames(): GameList[]{
     if(!this.searchKeyWord) return this.gameList;
     const keyWord = this.searchKeyWord.toLowerCase();
@@ -28,14 +34,32 @@ export class NavComponent {
     })
 
   }
+  selectedAuthorId(author: Author): void{
+    this.selectedAuthor = {...author};
+  }
+
+    /*METHODE DE GET D'UN AUTHOR */
+  getAllAuthors() {
+    this.authorService.getAllAuthors().subscribe((data) => {
+      this.ListAuthor = data;
+    });
+  }
+
+
+
   logout() {
     this.authService.logOut();
   }
   onWishlist(){
     this.router.navigate(['/wishlist']);
-    console.log('wishlist est cliqué')
   }
   onCategory() {
-    this.router.navigate(['/category']);
+    this.router.navigate(['/categorie']);
   }
+   onAuteur() {
+    this.router.navigate(['auteur']);
+  }
+
+
+
 }

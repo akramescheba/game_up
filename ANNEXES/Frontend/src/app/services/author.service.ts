@@ -7,18 +7,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthorService {
   private urlAuthor = 'http://localhost:8082/author';
+    private urlAllAuthors = 'http://localhost:8082/authors';
+  
   constructor(private http: HttpClient) {}
 
-  getAuthor(): Observable<any[]> {
-    return this.http.get<any[]>(this.urlAuthor);
+  getAllAuthors(): Observable<any[]> {
+    return this.http.get<any[]>(this.urlAllAuthors);
   }
   postAuthor(author: any): Observable<any> {
-    return this.http.post<any>(`${this.urlAuthor}`, author);
+    return this.http.post(`${this.urlAuthor}`, author);
   }
   updateAuthor(authorId: number, authorData: any): Observable<any> {
-    return this.http.patch<any>(`${this.urlAuthor}/${authorId}`, authorData);
+    return this.http.patch(`${this.urlAuthor}/${authorId}`, authorData);
   }
   deleteAuthorById(id: number):Observable<any>{
-    return this.http.delete<any>(`${this.urlAuthor}/${id}`)
+    return this.http.delete(`${this.urlAuthor}/${id}`)
   }
 }

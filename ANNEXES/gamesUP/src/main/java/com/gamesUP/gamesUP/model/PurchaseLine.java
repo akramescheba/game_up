@@ -30,7 +30,7 @@ public class PurchaseLine {
 
 	//Ajout des getters et setters
 	 public double getRating() {
-		return rating;
+		 return rating;
 	}
 
 	public void setRating(double rating) {
