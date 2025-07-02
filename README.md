@@ -1,6 +1,6 @@
 
 # GameUp
-
+![game_up](https://github.com/user-attachments/assets/0676568c-3e93-4c39-a342-96c18d2b3fdc)
 GameUp, une plateforme de vente de jeux de société en ligne. La plateforme GameUp permet de gérer un catalogue de jeux de sociétés, d'enregistrer les  utilisateurs et leurs achats et enfin de faire des recommandations des jeux aux clients en fonction des articles visités par chaque client sur le site. 
 
 La problématique est que la plateforme connaît quelques bugs depuis quelques temps, empêchant les clients de l’utiliser et ainsi de bénéficier de l'entièreté des fonctionnalités et cela fait baisser les ventes sur le site.
@@ -81,12 +81,12 @@ Veillez à bien remplir ces champs:
 La fenêtre ci-dessus s'affiche vous informant que le test de connection a réussie.
 
 3. Vous devez maintenant accèder à la connection que vous venez de créer pour créer une nouvelle base des données, et y rajouter des données de test.
+image
 
-![server](https://github.com/user-attachments/assets/3fb23178-27ff-42a1-86be-266379592df6)
 
 4. Une fois accedez à la connection, vous accedez à la page vous permettant de faire des requettes SQL.
 
-![creer une base de donnees](http://github.com/user-attachments/assets/0a295fe7-471b-4c65-9843-6bd18e7da263)
+image
 
 La requette suivante permet de créer une nouvelle base des données.
 
@@ -94,17 +94,16 @@ La requette suivante permet de créer une nouvelle base des données.
     CREATE DATABASE game_up ;
 ```
 
-![create database](http://github.com/user-attachments/assets/fd0fb6e5-d384-41ab-bab6-b8d894834997)
+image
 
 Après l'exécution de la requette SQL, on observe l'apparition de la base des données "game_up" suite à sa création comme sur l'image suivante :
 
-![database](http://github.com/user-attachments/assets/639b5fd4-130a-4237-9c79-65eb096b9f28)
-
+image
 Pour sélectionner la bas de données et y introduire des données de test, vous devez exécuter la commande suivante:
 ```bash
     USE game_up ; 
 ```
-![use database](http://github.com/user-attachments/assets/c026dfbf-29a8-4e1d-967d-9bfc97959b5e)
+image
 
 Vous devez procédez à la création de la table user, qui contiendra la liste des utilisateurs et leurs données personnelles. 
 
@@ -127,11 +126,11 @@ Requête d'ajout des données à la base:
 VALUES ();
 
 ```
-![insert des donnees](http://github.com/user-attachments/assets/58450fec-2f40-4f86-a5c8-9866350283d5)
+image
 ## Affichage des données de la base des données
 Avec la commande suivante, vous accèdez à toutes les données de la base sous forme de tableau.
 
-![affichage des donnees](http://github.com/user-attachments/assets/3c7365f3-ccf5-465f-b8c2-30e9d7ec7525)
+image
 
 ## Clonage du projet
 Créer un répertoire sur le bureau et ouvrez ce répertoire dans VS Code.
@@ -212,7 +211,7 @@ Ouvrez un navigateur et naviguer vers :
   | `Users`| ` http://localhost:8082/user` | ` http://localhost:8082/users` |
   | `Wishlist` | ` http://localhost:8082/wishlist` | ` http://localhost:8082/wishlists` |
   
-  
+  ![game_up](https://github.com/user-attachments/assets/0676568c-3e93-4c39-a342-96c18d2b3fdc)
   
 
    
