@@ -1,6 +1,6 @@
 
 # GameUp
-![game_up](https://github.com/user-attachments/assets/0676568c-3e93-4c39-a342-96c18d2b3fdc)
+
 GameUp, une plateforme de vente de jeux de société en ligne. La plateforme GameUp permet de gérer un catalogue de jeux de sociétés, d'enregistrer les  utilisateurs et leurs achats et enfin de faire des recommandations des jeux aux clients en fonction des articles visités par chaque client sur le site. 
 
 La problématique est que la plateforme connaît quelques bugs depuis quelques temps, empêchant les clients de l’utiliser et ainsi de bénéficier de l'entièreté des fonctionnalités et cela fait baisser les ventes sur le site.
@@ -108,14 +108,14 @@ image
 Vous devez procédez à la création de la table user, qui contiendra la liste des utilisateurs et leurs données personnelles. 
 
 ```bash
-    CREATE TABLE membre (
+    CREATE TABLE user (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email INT NOT NULL,
     nom VARCHAR (50) NOT NULL,
     prenom VARCHAR (50) NOT NULL,
     mdp VARCHAR (50) NOT NULL,);
 ```
-![create table](http://github.com/user-attachments/assets/3a98d6fc-12bb-416a-9416-f711eb401df9)
+image
 
 Vous devez actuellement ajouter des données de test contenant les informations au format nom.
 
@@ -211,7 +211,16 @@ Ouvrez un navigateur et naviguer vers :
   | `Users`| ` http://localhost:8082/user` | ` http://localhost:8082/users` |
   | `Wishlist` | ` http://localhost:8082/wishlist` | ` http://localhost:8082/wishlists` |
   
-  ![game_up](https://github.com/user-attachments/assets/0676568c-3e93-4c39-a342-96c18d2b3fdc)
+ 
+
+  ## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jordy-akra-mescheba/)
+
+
+ ![game_up](https://github.com/user-attachments/assets/0676568c-3e93-4c39-a342-96c18d2b3fdc)
+## Auteur
+
+- [@akramescheba](https://github.com/akramescheba)
   
 
    
