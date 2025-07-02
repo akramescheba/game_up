@@ -23,7 +23,7 @@ public class RecommendationResponseRepositoryTest {
 	private RecommendationServiceImpl recommendationServiceImpl;
 	@Test
 	void shouldIRecommendateResponse() {
-		List<RecommendationDTO> RecommendationRequest = recommendationServiceImpl.getAllRecommendation(1L);
+		List<RecommendationDTO> RecommendationRequest = recommendationServiceImpl.getRecommendations(1L);
 		assertEquals(2, RecommendationRequest.size());
 	};
 	}

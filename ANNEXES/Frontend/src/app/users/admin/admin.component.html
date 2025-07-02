@@ -1,6 +1,6 @@
-<div class="dashboard-content ">
-    <!-- deux colonnes latérales à gauche -->
-    <div class="colonne-gauche ">
+<div class="content">
+    <!-- COLONNE GAUCHE -->
+    <div class="col gauche">
         <button (click)="pageActive = 'games'"
             class="btn-dashboard cursor-pointer  relative inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-[#F5F5F5] hover:text-[#06B6D4] h-9 rounded-md px-3">
             <svg class="lucide lucide-rocket text-cyan-500 dark:text-cyan-400" stroke-linejoin="round"
@@ -19,7 +19,6 @@
         <!-- Profile utilisateur -->
         <fa-icon [icon]="faUser" class="fa-userIcon"></fa-icon>
         <h5 class="user-nom"> {{userName}}</h5>
-
         <!-- Bouton  de modification des utilisateurs -->
         <button class="button2" (click)="navigateTo('users')">
             <svg class="user-img" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" stroke-linecap="round"
@@ -43,7 +42,7 @@
             Jeux
         </button>
 
-          <!-- Bouton  liste des souhaits -->
+        <!-- Bouton  liste des souhaits -->
         <button class="button2" (click)="navigateTo('author')">
             <svg class="feather feather-heart" stroke-linejoin="round" stroke-linecap="round" stroke-width="2"
                 stroke="currentColor" fill="none" viewBox="0 0 24 24" height="24" width="24"
@@ -52,7 +51,7 @@
                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
                 </path>
             </svg>
-         Authors
+            Authors
         </button>
 
         <!-- Bouton d'ajout de Catégorie-->
@@ -79,7 +78,7 @@
             </svg>
             Publishers
         </button>
-      
+
 
         <!-- Boutons lateral  des  Liste des avis -->
         <button class="button2" (click)="navigateTo ('avis')">
@@ -92,7 +91,7 @@
             </svg>
             Liste des avis
         </button>
-            <!-- Boutons lateral  des  Purchase -->
+        <!-- Boutons lateral  des  Purchase -->
         <button class="button2" (click)="navigateTo ('purchase')">
             <svg class="lucide lucide-star text-orange-400 dark:text-orange-600" stroke-linejoin="round"
                 stroke-linecap="round" stroke-width="2" stroke="#FB923C" fill="#FB923C" viewBox="0 0 24 24" height="22"
@@ -114,9 +113,7 @@
             Déconnection
         </button>
 
-    </div>
-    <div class="colonne-droite">
-<router-outlet/>
-
-    </div>
+</div>
+<!-- COLONNE DROITE -->
+<div class="col droite"> <router-outlet /></div>
 </div>

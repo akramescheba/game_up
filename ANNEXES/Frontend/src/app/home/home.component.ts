@@ -59,13 +59,6 @@ authentification(){
     this.isDisplayDetailCard = true;
   }
 
-  // getCategoryList(): void{
-  //   this.appService.getAllCategories().subscribe((category)=>{
-  //     this.listCategory = category;
-  //     console.log(category)
-  //     })
-  // }
-
   /*FONCTION DE RECHERCHE DE JEU */
   getFilteredGames(): GameList[] {
     if (!this.searchWord) return this.gameList;

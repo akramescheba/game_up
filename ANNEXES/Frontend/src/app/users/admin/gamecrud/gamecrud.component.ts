@@ -81,9 +81,6 @@ export class GamecrudComponent implements OnInit {
     this.wishListService.ajoutWishList(games);
   }
   
-    reload() {
-    location.reload();
-  }
 /*FONCTION SEARCH*/
   getFilteredGames(): GameList[] {
     if (!this.searchWord) return this.gameList;

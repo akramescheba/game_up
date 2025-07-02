@@ -36,24 +36,18 @@ export class ClientComponent implements OnInit {
   wishList: GameList[] = [];
   avisList: any[] = [];
   categoryList: any[] = [];
-  recommendationsList:Recommendations[]=[];
 
+  recommendationsList:Recommendations[]=[];
+  userId!: ''
   searchWord: string = '';
   selectedGame: GameList | null = null;
   isDisplayDetailCard: boolean = false;
   isDisplayEdit: boolean = false;
-  
-//   isWishlistExistant(): boolean {
-//   return !!this.selectedGame && this.wishList.some(g => g.id === this.selectedGame!.id);
-// }
-
-
   selectGame(game: GameList): void {
     this.selectedGame = { ...game };
     this.isDisplayDetailCard = true;
   }
 
- 
 /*FONCTION SEARCH*/
   getFilteredGames(): GameList[] {
     if (!this.searchWord) return this.gameList;
@@ -64,6 +58,7 @@ export class ClientComponent implements OnInit {
   }
 
   ngOnInit() {   
+    this.getRecommendation();
     this.getAllGames();
     this.getAllCategories();
     this.getAllAvis();
@@ -90,10 +85,17 @@ export class ClientComponent implements OnInit {
   }
 
   /*APPEL DE L4API PYTHON DE RECOMMENDATIONS*/
-  getRecommendation(userId:number):void{
-     
-    this.recommendationService.getRecommendation(userId).subscribe((recommandations) =>{
-      this.recommendationsList = recommandations;
+   getRecommendation():void{
+      const userId = 1
+  if (!userId) {
+    this.toastr.error("Utilisateur non connecté.", `${userId}`);
+    return;
+  }
+
+    this.recommendationService.getRecommendation(userId).subscribe((recommendations) =>{
+      this.recommendationsList = recommendations;
+      console.log(userId)
+      
     })
   }
 

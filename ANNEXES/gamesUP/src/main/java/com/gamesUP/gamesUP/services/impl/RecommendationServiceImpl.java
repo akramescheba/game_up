@@ -10,8 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.gamesUP.gamesUP.dao.RecommendationRepository;
 import com.gamesUP.gamesUP.model.RecommendationResponse;
 import com.gamesUP.gamesUP.services.RecommendationService;
+
 import dto.RecommendationDTO;
 
 @Service
@@ -19,11 +21,13 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    RecommendationRepository recommendationRepository;
 
     @SuppressWarnings("null")
 	@Override
-    public List<RecommendationDTO> getAllRecommendation(Long userId) {
-       String pythonApiUrl = "http://localhost:8000/recommendations";
+    public List<RecommendationDTO> getRecommendations(Long userId) {
+        String pythonApiUrl = "http://localhost:8000/recommendations";
 
         Map<String, Object> requestBody = new HashMap<>();
         requestBody.put("user_id", userId);
@@ -34,7 +38,14 @@ public class RecommendationServiceImpl implements RecommendationService {
             requestBody,
             RecommendationResponse.class
         );
-
         return response.getBody().getRecommendations();
     }
+
+	@Override
+	public List<RecommendationDTO> getAllRecommendation() {
+		List<RecommendationDTO> recommendationsList = new ArrayList<RecommendationDTO>();
+		RecommendationDTO recommendationsDTO = new RecommendationDTO();
+		recommendationsList.add(recommendationsDTO);
+		return recommendationsList;
+	}
 }

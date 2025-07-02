@@ -1,8 +1,8 @@
 <!-- STRUCTURE GLOBALE DE LA PAGE AUTEUR-->
-<div class="category-content">
+<div class="author-content">
     <!-- AFFICHAGE DE LA LISTE DES AUTEUR-->
-    <div class="category-content" *ngIf="!isDisplayAuthorDetails " (click)="displayAuthorDetails()">
-        <div class="category-card" *ngFor="let author of ListAuthor" (click)="selectAuthorId(author)">
+    <div class="author-list-container" *ngIf="!isDisplayAuthorDetails " (click)="displayAuthorDetails()">
+        <div class="author-card" *ngFor="let author of ListAuthor" (click)="selectAuthorId(author)">
             <div class="card-body">
                 <h5 class="card-title">{{author.name}}</h5>
             </div>
@@ -31,7 +31,7 @@
                     <div class="tracker tr-8"></div>
                     <div class="tracker tr-9"></div>
                     <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
-                        <div class="category-">
+                        <div class="author-">
                             <div class="card-glare"></div>
                             <div class="cyber-lines">
                                 <span></span><span></span><span></span><span></span>

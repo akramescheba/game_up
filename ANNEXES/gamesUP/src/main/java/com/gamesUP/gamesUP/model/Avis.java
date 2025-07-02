@@ -22,7 +22,6 @@ private int note;
 /*AJOUT DES CHAMPS NAME ET DATE POUR  RECUPERER LES INFOS EN TEMPS REEL DE L'UTILISATEUR QUI A FAIT UN COMMENTAIRE POUR L'AFFICHAGE*/
 private String name;
 @JsonFormat(pattern="dd-MM-yy à HH:mm ")
-@Transient
 private LocalDateTime date;
 private String commentaire;
 

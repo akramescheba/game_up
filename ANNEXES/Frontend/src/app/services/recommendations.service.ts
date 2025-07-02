@@ -6,15 +6,18 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
+
 export class RecommendationsService {
+  private urlApiPython = 'http://localhost:8082/recommendations';
 
-  private urlApiPython = "http://localhost:8082/recommendations";
+  constructor(private http: HttpClient) {}
   
-
-  constructor(private http:HttpClient) { }
-
-  getRecommendation(recommendationId: number): Observable<Recommendations[]>{
-    return this.http.get<Recommendations[]>(`${this.urlApiPython}/${recommendationId}`);
+  getRecommendation(recommendation: number): Observable<Recommendations[]> {
+    const userId= 1
+    const urlRecommendation = `${this.urlApiPython}/${userId}`;
+    return this.http.get<Recommendations[]>(urlRecommendation);
   }
-
 }
+
+
+

@@ -24,7 +24,7 @@ public class RecommendationRespositoryTest {
 	
 @Test
 	void shouldHaveGetAllRecommendationResponse(){
-		List<RecommendationDTO> recommendationResponse = recommendationServiceImpl.getAllRecommendation(1L);
+		List<RecommendationDTO> recommendationResponse = recommendationServiceImpl.getRecommendations(1L);
 		assertEquals(2, recommendationResponse.size());
 	};
 }

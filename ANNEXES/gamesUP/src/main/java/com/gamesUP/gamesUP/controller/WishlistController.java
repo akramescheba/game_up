@@ -1,10 +1,7 @@
 package com.gamesUP.gamesUP.controller;
 
-import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
-import com.gamesUP.gamesUP.model.User;
-import com.gamesUP.gamesUP.model.Wishlist;
-import com.gamesUP.gamesUP.services.WishlistService;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +14,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.gamesUP.gamesUP.exception.ExceptionEntityDontExist;
+import com.gamesUP.gamesUP.model.Wishlist;
+import com.gamesUP.gamesUP.services.WishlistService;
 
 @RestController
 @CrossOrigin(origins={"http://localhost:4200"},  allowedHeaders = "*")

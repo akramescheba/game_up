@@ -1,8 +1,8 @@
 <!-- STRUCTURE GLOBALE DE LA PAGE AUTEUR-->
-<div class="auteur-content">
- <!-- AFFICHAGE DE LA LISTE DES AUTEUR-->
-    <div class="auteur-content" *ngIf="!isDisplayAuthorDetails " (click)="displayAuthorDetails()">
-        <div class="auteur-card" *ngFor="let author of ListAuthor" (click)="selectAuthorId(author)">
+<div class="author-content">
+    <!-- AFFICHAGE DE LA LISTE DES AUTEUR-->
+    <div class="author-list-container" *ngIf="!isDisplayAuthorDetails " (click)="displayAuthorDetails()">
+        <div class="author-card" *ngFor="let author of ListAuthor" (click)="selectAuthorId(author)">
             <div class="card-body">
                 <h5 class="card-title">{{author.name}}</h5>
             </div>
@@ -23,7 +23,7 @@
                     <div class="tracker tr-8"></div>
                     <div class="tracker tr-9"></div>
                     <div id="card" [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
-                        <div class="auteur-">
+                        <div class="author-">
                             <div class="card-glare"></div>
                             <div class="cyber-lines">
                                 <span></span><span></span><span></span><span></span>
@@ -36,7 +36,7 @@
                                 <div class="glow-3"></div>
                             </div>
                             <div class="subtitle">
-                                <div class="genre">Auteur: {{ game.author.name }}</div>
+                                <div class="genre">Auteur: {{ game.author }}</div>
                                 <div class="genre">Genre: {{ game.genre }}</div>
                                 <span>ID: {{ game.id }}</span>
                                 <span class="highlight">Édition: {{ game.numEdition }}</span>
@@ -71,24 +71,21 @@
                     <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
                     <div class="text">
                         <p class="text">Identifiant : {{ selectedGame?.id }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
                         <p class="text">Genre : {{ selectedGame?.genre }}</p>
                         <p class="text">Edition : {{ selectedGame?.numEdition }}</p>
                         <p class="text">Catégorie : {{ selectedGame?.category?.type }}</p>
                         <p class="text">Description : {{ selectedGame?.description }}</p>
                         <p class="text">Publié par : {{ selectedGame?.publisher?.name }}</p>
                     </div>
-                    <!-- <div class="container-button">
-                        <button class="form-edit-btn">
-                            Modifier
-                        </button>
-                        <button class="form-delete-btn" >
-                            Supprimer
-                        </button>
-                    </div> -->
+                    <div class="container-button">
+                   
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </div>

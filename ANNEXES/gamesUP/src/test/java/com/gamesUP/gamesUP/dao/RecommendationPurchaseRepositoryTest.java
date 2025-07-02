@@ -24,7 +24,7 @@ public class RecommendationPurchaseRepositoryTest {
 	@Test
 	void shouldIRecommendatePurchase() {
 		
-		List<RecommendationDTO> recommendationPurchase =recommendationServiceImpl.getAllRecommendation(1L);		
+		List<RecommendationDTO> recommendationPurchase =recommendationServiceImpl.getRecommendations(1L);		
 		assertEquals(2, recommendationPurchase.size());
 	};
 }

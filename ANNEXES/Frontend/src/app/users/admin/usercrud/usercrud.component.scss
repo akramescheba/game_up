@@ -1,8 +1,8 @@
 .content {
-    margin: 50px 0;
+    padding:50px 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -134,6 +134,7 @@ fa-icon {
     position: fixed;
     bottom: 20px;
     left: 450px;
+    z-index: 999;
 }
 
 .btn-ajouter:hover {
@@ -144,7 +145,7 @@ fa-icon {
     box-shadow:
         var(--hover-shadows),
         var(--accent) 0px 0px 10px 5px;
-    background-color: rgba(255, 0, 0, 0.37);
+    background-color: rgba(255, 253, 253, 0.37);
     border: 1px solid #a1a1a1;
     transform: scale(0.95);
 }

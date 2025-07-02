@@ -41,7 +41,7 @@ import { Tag } from 'primeng/tag';
 export class AvisComponent implements OnInit {
   constructor(
     private authService: AuthService,
-    private appService:AppService,
+    private appService: AppService,
     private avisService: AvisService,
     private formBuilder: FormBuilder,
     private messageService: MessageService,
@@ -69,11 +69,9 @@ export class AvisComponent implements OnInit {
     }
     this.avisService.createAvis(this.avisForm.value).subscribe(() => {
       this.toastr.success(
-        `Nous vous remercions Mr./Mse ${this.userName}`,
-        'avis posté'
-      );
+        `Nous vous remercions Mr./Mse ${this.userName}`, 'avis posté' );
     });
     this.avisForm.reset();
-   this.appService.reload();
+    this.appService.reload();
   }
 }

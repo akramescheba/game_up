@@ -35,10 +35,10 @@ export interface Publisher {
   games: GameList[];
 }
 export interface ListAvis {
-  id: number;
-  note: number;
-  date: Date|string;
+    id: number;   
   name: string;
+  date: Date;
+  note: number;
   commentaire: string;
 }
 export interface WishList{

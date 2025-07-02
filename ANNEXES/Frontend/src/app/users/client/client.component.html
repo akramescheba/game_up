@@ -109,10 +109,10 @@
             </div>
         </div>
     </div>
-     <ul class="recommandations" *ngIf="recommendationsList.length > 0">
+     <ul class="recommandations" >
         <h2>Nos recommandations des jeux</h2>
         <li class="jeu-recommandations" *ngFor="let game of recommendationsList" >
-            ID: {{ game.game_id }}
+                      {{ game.game_name }}
         </li>
 
         

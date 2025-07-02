@@ -1,31 +1,28 @@
 package com.gamesUP.gamesUP.dao;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import dto.GameDTO;
 import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
-
 import com.gamesUP.gamesUP.model.Author;
 import com.gamesUP.gamesUP.model.Category;
 import com.gamesUP.gamesUP.model.Game;
 import com.gamesUP.gamesUP.model.Publisher;
 import com.gamesUP.gamesUP.services.impl.GameServiceImpl;
 
-import dto.GameDTO;
 
 
 @DataJpaTest
 @ActiveProfiles("test")
+
+//TEST DES METHODES GETs, POST, PATCH, DELETE;
 public class GameRepositoryTest {
 	  @Autowired
 	  private GameServiceImpl gameServiceImpl;
 	
-	  //Test de vérification des méthode GETs, POST, PATCH et DELETE du modèle GAME;
-	  // Test GetAll
+	  //TEST GET ALL
 	  @Test
 	  void shouldGetAllGame() {
 		  Game game = new Game();
@@ -33,6 +30,7 @@ public class GameRepositoryTest {
 	    List<Game> games = gameServiceImpl.findALL();
 	    assertEquals(1, games.size());
 	  }
+	  //TEST GET BY ID
 	  @Test
 	  void shouldGetGameById() {
 		  Game games = new Game();
@@ -40,7 +38,7 @@ public class GameRepositoryTest {
 		   games = gameServiceImpl.findById((long) 1);
 		  assertEquals("Everspace", games.getNom());
 	  }
-	   //Test Post
+	  //TEST POST
 	    @Test
 	    void shouldCreateGame() {
 	    	Game newGame = new Game();
@@ -67,7 +65,7 @@ public class GameRepositoryTest {
 	      assertEquals("Jordy AKRA MESCHEBA", newGame.getPublisher().getName());
 	      assertEquals("Action", newGame.getCategory().getType());
 	    }
-	    
+	    //TEST UPDATE PARTIAL
 	    @Test
 	    void shouldUpdatePartialGame() {
 	    	GameDTO newGame = new GameDTO();
@@ -77,7 +75,7 @@ public class GameRepositoryTest {
 	  	assertEquals(1L, newGame.getId());
 
 	    }
-	    //Test Update
+	    //TEST UPDATE 
 	    @Test
 	    void shouldUpdateGame() {
 	    	Game gameExistant = gameServiceImpl.findById(1L);
@@ -89,9 +87,9 @@ public class GameRepositoryTest {
 
 	    }
 	    
-	   // @Test
+	    //TEST DELETE
 	    void shouldDeleteGame() {
 	    	gameServiceImpl.delete((long) 1);
-	    		  	};
+	    	};
 	
 }
