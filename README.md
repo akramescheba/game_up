@@ -86,7 +86,13 @@ Veillez à bien remplir ces champs:
 - Connection name : Définier un nom pour la connection
 - Hostname : 127.0.0.1 ou localhost
 - Username : root
-- Password : Saisir le mot de passe que vous avez défini lors de l'installation de MySQL Workbench.
+- Password : Saisir le mot de passe que vous avez défini lors de l'installation de MySQL Workbench. C'est également le même mot de passe défini dans application.properties comme indiqué sur l'image suivante:
+
+![MySQL](https://i.postimg.cc/rsPf11mk/appication-properties.png)
+
+## NB:
+
+Si vous souhaitez utiliser un mot de passe différent, vous devez faire le changement dans **application.properties** ainsi que lors de l'installation de **My SQL Workbench**. En sommes les identifients du server créer sur Workbench sont les même que les identifients dans application.properties.
 
 2. Après avoir configuré la connection,clique sur le bouton Test de connection :
 
