@@ -9,6 +9,7 @@
         <input class="input" type="text" [(ngModel)]="searchWord" placeholder="Saisissez un mot" />
         <span class="input-border"></span>
     </div>
+   
     <!-- AFFICHAGE DE LA LISTE DES JEUX DANS UNE CARD -->
     <div class="content" *ngIf="!isDisplayDetailCard">
         <div class="container noselect" *ngFor="let game of getFilteredGames()" (click)="selectGame(game)"
@@ -37,7 +38,7 @@
                             <div class="glow-3"></div>
                         </div>
                         <div class="subtitle">
-                            <div class="genre">Auteur: {{ game.author }}</div>
+                            <div class="genre">Auteur: {{ game.author.name }}</div>
                             <div class="genre">Genre: {{ game.genre }}</div>
                             <span>ID: {{ game.id }}</span>
                             <span class="highlight">Édition: {{ game.numEdition }}</span>
@@ -71,7 +72,7 @@
                     <strong class="titre-details"> {{ selectedGame?.nom }}</strong>
                     <div class="text">
                         <p class="text">Identifiant : {{ selectedGame?.id }}</p>
-                        <p class="text">Auteur : {{ selectedGame?.author }}</p>
+                        <p class="text">Auteur : {{ selectedGame?.author?.name }}</p>
                         <p class="text">Genre : {{ selectedGame?.genre }}</p>
                         <p class="text">Description : {{ selectedGame?.description }}</p>
                         <p class="text">Edition : {{ selectedGame?.numEdition }}</p>

@@ -11,6 +11,7 @@ Le backend du site est devenu obsolète et il va falloir le refondre pour faire 
 - [Utiliser un éditeur de code](https://code.visualstudio.com/)
 - [Connaissance en Angular, et du concept MVC ](./)
 - [Connaissance en JAVA, SpringBoot et Maven ](./)
+- [Connaissance en Python, et du concept de Machine Learning ](./)
 - [Connaissance en de Git et Github](./)
 
 ## Environnement de développement

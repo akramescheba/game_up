@@ -8,12 +8,12 @@
             </div>
             <div class="modal-body">
 
-                <!-- <input class="note" type="number" formControlName="note" min="1" max="10" placeholder="Note "> -->
-                <div class="card flex justify-center">
+                <input class="note" type="number" formControlName="note" min="1" max="10" placeholder="Note ">
+                <!-- <div class="card flex justify-center">
                     <p-rating name="note" formControlName="note" />
-                </div>
+                </div> -->
                 <div class="erreur" *ngIf="avisForm.get('note')?.invalid && avisForm.get('note')?.touched">
-                    La note doit être comprise entre 1 et 5.
+                    La note doit être comprise entre 1 et 10.
                 </div>
                 <textarea min="20" max="150" class="card-text form-control mb-3" formControlName="commentaire"
                     placeholder="Partagez votre expérience concernant ce jeu">

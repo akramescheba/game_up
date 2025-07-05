@@ -1,9 +1,10 @@
+.content{
+    background:  rgb(146, 146, 146);
+}.container{
+  display: flex;
+  flex-direction: column;
+    width: max-content;
 
-
-
-.conatainer{
-padding:0 300px;
-  background:  rgba(14, 13, 13, 0.479);
 }
 
 /*STYLE D'AFFICHAGES DES AVIS*/
@@ -12,8 +13,6 @@ padding:0 300px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: max-content;
-  gap: 30px;
   padding: 20px;
 }
 .card {
