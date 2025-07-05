@@ -92,7 +92,7 @@ Veillez à bien remplir ces champs:
 
 ## NB:
 
-Si vous souhaitez utiliser un mot de passe différent, vous devez faire le changement dans **application.properties** ainsi que lors de l'installation de **My SQL Workbench**. En sommes les identifients du server créer sur Workbench sont les même que les identifients dans application.properties.
+Si vous souhaitez utiliser un mot de passe différent, vous devez faire le changement dans **application.properties** ainsi que lors de l'installation de **My SQL Workbench**. En sommes les identifients du server créé sur Workbench sont les mêmes que les identifients dans application.properties.
 
 2. Après avoir configuré la connection,clique sur le bouton Test de connection :
 
