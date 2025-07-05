@@ -1,14 +1,28 @@
+.nav{
+  top: 20px;
+  position: fixed;
+  color: #fff;
+  left: 20px;
+  cursor: pointer;
+  text-decoration:underline;
+font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+text-transform: uppercase;
+font-weight: 900;
+letter-spacing: 1px;
+
+}
+
 .contente{
     display: flex;
     justify-content: center;
     align-items: center;
     // margin: 100px 0 0 0;
-    width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(139, 2, 0, 0.692), rgba(0, 255, 225, 0.233), rgba(5, 5, 70, 0.649)),url("/assets/home.webp");
+    background-image:url("/assets/accueil-game_up.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+  
 }
 /* From Uiverse.io by Yaya12085 */ 
 .form-container {

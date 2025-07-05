@@ -2,10 +2,10 @@ package com.gamesUP.gamesUP.services;
 
 import java.util.List;
 
-import com.gamesUP.gamesUP.model.Category;
 import com.gamesUP.gamesUP.model.Game;
 
 import dto.GameDTO;
+
 
 public interface GameService {
 

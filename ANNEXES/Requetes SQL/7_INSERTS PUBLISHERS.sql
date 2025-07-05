@@ -1,0 +1,1 @@
+INSERT INTO publisher ( name) VALUES ( 'VISIPLUS');

@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 @Table(name = "publisher")
 public class Publisher {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	@OneToMany(mappedBy = "publisher")
