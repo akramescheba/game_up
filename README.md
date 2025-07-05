@@ -18,7 +18,7 @@ Le backend du site est devenu obsolète et il va falloir le refondre pour faire 
 - J'ai utilisé VS Code comme éditeur de code pour ce projet. Le projet est développé avec springboot maven et angular. L'api du Machine Learning est quant à elle développer en python. Pour cela, qulques configuration sont nécessaires pour votre environnement de développement afin de faire fonctionner tout le projet.
 - Pour configurer votre environnement de développement, vous devez installer les outils suivants:
 
-` Java openjdk 21.0.6 ou supérieur`
+`Java openjdk 21.0.6 ou supérieur`
 
 `Apache Maven 3.9.9  ou supérieur`
 
@@ -28,7 +28,7 @@ Le backend du site est devenu obsolète et il va falloir le refondre pour faire 
 
 `MySQL 8.0.21 ou supérieur`
 
-` Python 3.11.4 ou supérieur`
+`Python 3.11.4 ou supérieur`
 
 ## Installations
 
