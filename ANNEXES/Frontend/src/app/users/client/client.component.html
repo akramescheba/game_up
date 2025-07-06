@@ -1,5 +1,5 @@
 <div class="home-page">
-    <router-outlet/>
+    <router-outlet />
 
     <!--BARRE DE RECHERCHE-->
     <div class="form">
@@ -109,16 +109,19 @@
             </div>
         </div>
     </div>
-     <ul class="recommandations" >
+    <ul class="titre-recommandations">
         <h2>Nos recommandations des jeux</h2>
-        <li class="jeu-recommandations" *ngFor="let game of recommendationsList" >
-                      {{ game.game_name }}
+        <li class="jeu-recommandations" *ngFor="let game of recommendationsList">
+            {{ game.game_name }}
         </li>
-
-        
-<div *ngIf="recommendationsList.length === 0">
-  <p>Aucune recommandation pour l'instant.</p>
-</div>
+        <!-- From Uiverse.io by Uncannypotato69 -->
+        <div class="wrapper" *ngIf="recommendationsList.length === 0">
+            <span class="letter letter1">Aucune</span>
+            <span class="letter letter2"> recommendation</span>
+            <span class="letter letter3"> pour </span>
+            <span class="letter letter4"> le </span>
+            <span class="letter letter5">momement</span>
+        </div>
 
     </ul>
 </div>

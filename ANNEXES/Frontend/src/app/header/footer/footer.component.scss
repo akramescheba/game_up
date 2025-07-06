@@ -3,7 +3,7 @@
 }.container{
   display: flex;
   flex-direction: column;
-    width: max-content;
+  width:max-content;
 
 }
 
@@ -13,6 +13,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+    width: max-content;
   padding: 20px;
 }
 .card {
@@ -66,3 +67,4 @@
   color: #666;
   width: 230px;
 }
+

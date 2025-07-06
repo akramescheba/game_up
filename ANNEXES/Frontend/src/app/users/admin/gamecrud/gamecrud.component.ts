@@ -133,7 +133,7 @@ export class GamecrudComponent implements OnInit {
       authorId: this.selectedAuthorId,
     };
     this.appService.updatePartialGame(gameId, patchData).subscribe((data) => {
-      this.toastr.success(`Mise à jour du reussite`, `${gameNom} `);
+      this.toastr.success(`Mise à jour reussite`, `${gameNom} `);
       this.appService.reload();
     });
   }

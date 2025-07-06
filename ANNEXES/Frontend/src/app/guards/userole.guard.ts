@@ -1,15 +1,17 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
 export const useRoleGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const toastr = inject(ToastrService);
   const userRole = localStorage.getItem('role');
-  const rolesAutorises = route.data?.['roles'] as string[];
+  const userName = localStorage.getItem('nom');
 
+  const rolesAutorises = route.data?.['roles'] as string[];
   if (userRole && rolesAutorises && rolesAutorises.includes(userRole)) {
-    toastr.info(`Vous êtes connecté en tant que ${userRole}`);
+    toastr.info(`Vous êtes connecté en tant que ${userName}`);
     return true;
   }
 
