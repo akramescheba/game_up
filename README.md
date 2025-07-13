@@ -228,7 +228,7 @@ Pour que tout fonctionne correctement, les servers python, spring-boot et angula
 
 ## Les endpoints de tests
 
-| `Endpoints`       | `POST, PUT, PATCH et DELETE by Id `      | `GET de liste`                                  |
+| `Endpoints`       | `POST, PUT, PATCH, GET by Id et DELETE by Id `      | `GET de liste`                                  |
 | :---------------- | :--------------------------------------- | :---------------------------------------------- |
 | `Author`          | ` http://localhost:8082/author`          | ` http://localhost:8082/authors`                |
 | `Avis`            | ` http://localhost:8082/avis`            | ` http://localhost:8082/avis`                   |
