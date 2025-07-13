@@ -228,7 +228,7 @@ Pour que tout fonctionne correctement, les servers python, spring-boot et angula
 
 ## Les endpoints de tests
 
-| `Endpoints`       | `POST, PUT, PATCH, GET by Id et DELETE by Id `      | `GET de liste`                                  |
+| `Endpoints`       | `POST, PUT, PATCH, GET by Id et DELETE by Id `      | `GET liste`                                  |
 | :---------------- | :--------------------------------------- | :---------------------------------------------- |
 | `Author`          | ` http://localhost:8082/author`          | ` http://localhost:8082/authors`                |
 | `Avis`            | ` http://localhost:8082/avis`            | ` http://localhost:8082/avis`                   |
@@ -237,7 +237,7 @@ Pour que tout fonctionne correctement, les servers python, spring-boot et angula
 | `Inventory`       | ` http://localhost:8082/inventory`       | ` http://localhost:8082/inventories`            |
 | `Publisher`       | ` http://localhost:8082/publisher`       | ` http://localhost:8082/publishers`             |
 | `Purchase`        | ` http://localhost:8082/purchase`        | ` http://localhost:8082/purchases`              |
-| `Recommendations` | ` http://localhost:8082/recommendations` | ` http://localhost:8082/recommendations/userId` |
+| `Recommendations` | ` http://localhost:8082/recommendations` | ` http://localhost:8082/recommendations` |
 | `Users`           | ` http://localhost:8082/user`            | ` http://localhost:8082/users`                  |
 | `Wishlist`        | ` http://localhost:8082/wishlist`        | ` http://localhost:8082/wishlists`              |
 
